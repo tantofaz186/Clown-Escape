@@ -3,7 +3,7 @@ using UnityEngine;
 public class Jumper : MonoBehaviour
 {
     public float jumpForce;
-
+    private @InputSystemAndroid a = new InputSystemAndroid();
     private Collider col;
     private Rigidbody rb;
     private float distanceToGround;
