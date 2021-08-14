@@ -8,14 +8,15 @@ using UnityEngine.InputSystem;
 public class InputManager : Singleton<InputManager>
 {
 
-    #region events
+ 
     
     public delegate void StartedTouch(Vector2 pos, float time);
     public event StartedTouch OnStartTouch;
     public delegate void EndedTouch(Vector2 pos, float time);
     public event EndedTouch OnEndTouch;
-
-    #endregion
+    
+    
+    
     
     
     private PlayerInput playerInput;
