@@ -8,7 +8,8 @@ public class SwipeDetection : MonoBehaviour
     private float maxTime = 1f;
     [SerializeField] 
     private float minimumDistance = 0.2f;
-    
+    [SerializeField]
+    private float angleThreshold = 15f;
     
     private InputManager inputManager;
 
@@ -44,48 +45,40 @@ public class SwipeDetection : MonoBehaviour
     {
         endPos = pos;
         endTime = time;
-        DetectSwipe();
+        DetectSwipeType();
     }
 
-    private SwipeType DetectSwipe()
+    private SwipeType DetectSwipeType()
     {
-        
         if (Vector3.Distance(endPos, startPos) >= minimumDistance 
             && endTime - startTime <= maxTime)
         {
             Debug.DrawLine(startPos, endPos, Color.red,6f, false);
-        }
+            var vectorDir = (endPos - startPos).normalized;
+            if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
+            {
+                Debug.Log("up");
+                return SwipeType.Up;
+            }
 
-        var vectorDir = (endPos - startPos).normalized;
-        float angleThreshold = 15f;
-        if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
-        {
-            Debug.Log("up");
-            return SwipeType.Up;
-        }
-        if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
-        {
-            Debug.Log("down");
-            return SwipeType.Down;
-        }
-        if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
-        {
-            Debug.Log("left");
-            return SwipeType.Left;
-        }
-        if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
-        {
-            Debug.Log("right");
-            return SwipeType.Right;
+            if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
+            {
+                Debug.Log("down");
+                return SwipeType.Down;
+            }
+
+            if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
+            {
+                Debug.Log("left");
+                return SwipeType.Left;
+            }
+
+            if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
+            {
+                Debug.Log("right");
+                return SwipeType.Right;
+            }
         }
         return default;
     }
 }
-public enum SwipeType
-{
-    Up,
-    Down,
-    Left,
-    Right,
-    Diagonal = default
-};

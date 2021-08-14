@@ -1428,6 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 1
   minimumDistance: 0.2
+  angleThreshold: 15
 --- !u!114 &1695743242
 MonoBehaviour:
   m_ObjectHideFlags: 0
