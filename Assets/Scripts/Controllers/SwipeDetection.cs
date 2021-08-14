@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class SwipeDetection : MonoBehaviour
 {
     [SerializeField] 
@@ -17,9 +16,12 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 endPos;
     private float startTime;
     private float endTime;
+
+    private Camera mainCamera;
     private void Awake()
     {
         inputManager = InputManager.Instance;
+        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -44,15 +46,41 @@ public class SwipeDetection : MonoBehaviour
     {
         endPos = pos;
         endTime = time;
+        DetectSwipe();
     }
 
-    private void DetectSwipe()
+    private SwipeType DetectSwipe()
     {
+        
         if (Vector3.Distance(endPos, startPos) >= minimumDistance 
             && endTime - startTime <= maxTime)
         {
-            Debug.DrawLine(startPos, endPos, Color.red,2f);
+            Debug.DrawLine(startPos, endPos, Color.red,6f, false);
         }
+
+        var vectorDir = (endPos - startPos).normalized;
+        float angleThreshold = 15f;
+        if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
+        {
+            Debug.Log("up");
+            return SwipeType.Up;
+        }
+        if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
+        {
+            Debug.Log("down");
+            return SwipeType.Down;
+        }
+        if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
+        {
+            Debug.Log("left");
+            return SwipeType.Left;
+        }
+        if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
+        {
+            Debug.Log("right");
+            return SwipeType.Right;
+        }
+        return default;
     }
 }
 public enum SwipeType
@@ -61,5 +89,5 @@ public enum SwipeType
     Down,
     Left,
     Right,
-    Diagonal
+    Diagonal = default
 };
