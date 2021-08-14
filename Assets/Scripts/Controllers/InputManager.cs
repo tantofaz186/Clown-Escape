@@ -42,6 +42,6 @@ public class InputManager : Singleton<InputManager>
         OnStartTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
     
     private void EndedPrimaryTouch(InputAction.CallbackContext context) =>
-        OnEndTouch?.Invoke( playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
+        OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
     
 }
