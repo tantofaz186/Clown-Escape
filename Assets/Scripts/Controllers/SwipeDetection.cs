@@ -16,12 +16,10 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 endPos;
     private float startTime;
     private float endTime;
-
-    private Camera mainCamera;
+    
     private void Awake()
     {
         inputManager = InputManager.Instance;
-        mainCamera = Camera.main;
     }
 
     private void OnEnable()
