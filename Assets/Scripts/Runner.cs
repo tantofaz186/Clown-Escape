@@ -2,18 +2,13 @@ using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
-    #region Public Variables
     
-    public float acceleration;
-    public float maxSpeed;
-
-    #endregion
-    
-    #region Private Variables
+    [SerializeField] 
+    private float acceleration;
+    [SerializeField] 
+    private float maxSpeed;
     
     private Rigidbody rb;
-    
-    #endregion
 
     #region Unity Events
 

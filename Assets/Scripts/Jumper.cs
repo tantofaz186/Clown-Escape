@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Jumper : MonoBehaviour
 {
-    public float jumpForce;
+    [SerializeField] 
+    private float jumpForce;
+    
     private Collider col;
     private Rigidbody rb;
     private float distanceToGround;

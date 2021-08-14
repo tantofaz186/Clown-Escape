@@ -3,8 +3,11 @@ using UnityEngine;
 public class Trapeze : MonoBehaviour
 {
 
-    public float maxAngle;
-    public float period;
+    [SerializeField] 
+    private float maxAngle;
+    [SerializeField] 
+    private float period;
+    
     private float z;
     // Start is called before the first frame update
     void Start()

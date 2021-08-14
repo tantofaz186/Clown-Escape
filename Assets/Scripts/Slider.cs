@@ -11,7 +11,7 @@ public class Slider : MonoBehaviour
     private void Update()
     {
         if (Input.GetButtonDown("Slide"))
-        { 
+        {
             Slide();   
         }
     }

@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    public GameObject player;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private GameObject player;
     private Collider playerCollider;
 
     public static event Action CollidedWithCharacter;

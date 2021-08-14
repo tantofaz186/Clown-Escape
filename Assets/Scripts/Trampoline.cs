@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Trampoline : MonoBehaviour
 {
-    public float jumpForce;
+    [SerializeField] 
+    private float jumpForce;
 
     private Collider mainCharacterCollider;
     private void Start()

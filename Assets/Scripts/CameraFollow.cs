@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject objectToFollow;
+    [SerializeField] 
+    GameObject objectToFollow;
 
     [Range(0f, 1f)]
-    public float interpolation;
+    [SerializeField] 
+    float interpolation;
 
     private Vector3 vectorDistance;
     

@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float period;
-    public Vector3 endPos;
+    [SerializeField] 
+    private float period;
+    [SerializeField] 
+    private Vector3 endPos;
+    
     private Vector3 startPos;
     private float sin;
 
