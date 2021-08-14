@@ -10,8 +10,6 @@ public class Runner : MonoBehaviour
     
     private Rigidbody rb;
 
-    #region Unity Events
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,8 +22,5 @@ public class Runner : MonoBehaviour
             rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
         
     }
-
-    #endregion
-    
     
 }
