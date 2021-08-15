@@ -7,24 +7,19 @@ using UnityEngine.InputSystem;
 [DefaultExecutionOrder(-1)]
 public class InputManager : Singleton<InputManager>
 {
-
- 
-    
+    #region Events
     public delegate void StartedTouch(Vector2 pos, float time);
     public event StartedTouch OnStartTouch;
     public delegate void EndedTouch(Vector2 pos, float time);
     public event EndedTouch OnEndTouch;
-    
-    
-    
-    
+    #endregion
+
     
     private PlayerInput playerInput;
-    private Camera mainCamera;
+    
     private void Awake()
     {
         playerInput = new PlayerInput();
-        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -43,13 +38,10 @@ public class InputManager : Singleton<InputManager>
         playerInput.Touch.PrimaryContact.canceled += context => EndedPrimaryTouch(context);
     }
 
-    private void StartedPrimaryTouch(InputAction.CallbackContext context)
-    {
-        OnStartTouch?.Invoke(mainCamera.ScreenToWorldPoint(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
-    }
-
-    private void EndedPrimaryTouch(InputAction.CallbackContext context)
-    {
-        OnEndTouch?.Invoke( mainCamera.ScreenToWorldPoint(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
-    }
+    private void StartedPrimaryTouch(InputAction.CallbackContext context)=>
+        OnStartTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
+    
+    private void EndedPrimaryTouch(InputAction.CallbackContext context) =>
+        OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
+    
 }
