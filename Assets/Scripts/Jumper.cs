@@ -10,23 +10,7 @@ public class Jumper : MonoBehaviour
     private Rigidbody rb;
     private float distanceToGround;
 
-    private SwipeDetection inputDetection;
-    private void Awake()
-    {
-        inputDetection = SwipeDetection.Instance;
-    }
 
-    private void OnEnable()
-    {
-        inputDetection.OnSwipeUp += Jump;
-
-    }
-
-    private void OnDisable()
-    {
-        inputDetection.OnSwipeUp -= Jump;
-        
-    }
 
     private void Start()
     {
