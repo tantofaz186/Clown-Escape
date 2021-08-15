@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    
     [SerializeField] private float jumpForce = 9.5f;
-
     [SerializeField] private float acceleration = 11;
-
     [SerializeField] private float maxSpeed = 10;
 
 
