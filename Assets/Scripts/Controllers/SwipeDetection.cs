@@ -2,21 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class SwipeDetection : Singleton<SwipeDetection>
 {
     public event Action OnSwipeUp;
     public event Action OnSwipeDown;
     public event Action OnSwipeLeft;
     public event Action OnSwipeRight;
-    
-    
-    [SerializeField] 
-    private float maxTime = 1f;
-    [SerializeField] 
-    private float minimumDistance = 0.2f;
-    [SerializeField]
-    private float angleThreshold = 15f;
-    
+
+
+    [SerializeField] private float maxTime = 1f;
+    [SerializeField] private float minimumDistance = 0.2f;
+    [SerializeField] private float angleThreshold = 15f;
+
     private InputManager inputManager;
 
     private Vector2 startPos;
@@ -24,7 +22,7 @@ public class SwipeDetection : Singleton<SwipeDetection>
     private float startTime;
     private float endTime;
 
-    private bool isSwipe => 
+    private bool isSwipe =>
         Vector3.Distance(endPos, startPos) >= minimumDistance && endTime - startTime <= maxTime;
 
     private void Awake()
@@ -61,7 +59,7 @@ public class SwipeDetection : Singleton<SwipeDetection>
     {
         if (isSwipe)
         {
-            Debug.DrawLine(startPos, endPos, Color.red,6f, false);
+            Debug.DrawLine(startPos, endPos, Color.red, 6f, false);
             var vectorDir = (endPos - startPos).normalized;
             if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
             {
