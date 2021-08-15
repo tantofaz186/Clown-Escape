@@ -1,7 +1,4 @@
-using System;
-using UnityEngine;
-
-public interface Slider
+public interface ISlider
 {
     void Slide();
 }
