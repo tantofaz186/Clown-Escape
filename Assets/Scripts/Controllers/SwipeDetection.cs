@@ -2,8 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SwipeDetection : MonoBehaviour
+public class SwipeDetection : Singleton<SwipeDetection>
 {
+    public event Action OnSwipeUp;
+    public event Action OnSwipeDown;
+    public event Action OnSwipeLeft;
+    public event Action OnSwipeRight;
+    
+    
     [SerializeField] 
     private float maxTime = 1f;
     [SerializeField] 
@@ -17,7 +23,10 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 endPos;
     private float startTime;
     private float endTime;
-    
+
+    private bool isSwipe => 
+        Vector3.Distance(endPos, startPos) >= minimumDistance && endTime - startTime <= maxTime;
+
     private void Awake()
     {
         inputManager = InputManager.Instance;
@@ -48,37 +57,32 @@ public class SwipeDetection : MonoBehaviour
         DetectSwipeType();
     }
 
-    private SwipeType DetectSwipeType()
+    private void DetectSwipeType()
     {
-        if (Vector3.Distance(endPos, startPos) >= minimumDistance 
-            && endTime - startTime <= maxTime)
+        if (isSwipe)
         {
             Debug.DrawLine(startPos, endPos, Color.red,6f, false);
             var vectorDir = (endPos - startPos).normalized;
             if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
             {
                 Debug.Log("up");
-                return SwipeType.Up;
+                OnSwipeUp?.Invoke();
             }
-
-            if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
+            else if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
             {
                 Debug.Log("down");
-                return SwipeType.Down;
+                OnSwipeDown?.Invoke();
             }
-
-            if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
+            else if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
             {
                 Debug.Log("left");
-                return SwipeType.Left;
+                OnSwipeLeft?.Invoke();
             }
-
-            if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
+            else if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
             {
                 Debug.Log("right");
-                return SwipeType.Right;
+                OnSwipeRight?.Invoke();
             }
         }
-        return default;
     }
 }
