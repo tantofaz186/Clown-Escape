@@ -4,11 +4,13 @@ public class Runner : MonoBehaviour
 {
     
     [SerializeField] 
-    private float acceleration = 11;
+    private float acceleration;
     [SerializeField] 
-    private float maxSpeed = 10;
+    private float maxSpeed;
     
     private Rigidbody rb;
+
+    #region Unity Events
 
     private void Start()
     {
@@ -22,5 +24,8 @@ public class Runner : MonoBehaviour
             rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
         
     }
+
+    #endregion
+    
     
 }

@@ -553,8 +553,9 @@ GameObject:
   - component: {fileID: 544451323}
   - component: {fileID: 544451322}
   - component: {fileID: 544451326}
-  - component: {fileID: 544451328}
   - component: {fileID: 544451327}
+  - component: {fileID: 544451328}
+  - component: {fileID: 544451329}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -683,10 +684,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 544451321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5168d480d31f234faa69d378a9cded5, type: 3}
+  m_Script: {fileID: 11500000, guid: 187d0870548090f4b9193292c52063de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 9.5
+--- !u!114 &544451329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544451321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce7941ba9038794c803eebbc3cce134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &570288213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1144,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1415,7 +1428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 1
   minimumDistance: 0.2
-  angleThreshold: 15
 --- !u!114 &1695743242
 MonoBehaviour:
   m_ObjectHideFlags: 0
