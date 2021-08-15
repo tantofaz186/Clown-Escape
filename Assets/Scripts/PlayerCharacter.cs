@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class PlayerCharacter : MonoBehaviour, ISlider, IJumper
+public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 9.5f;
+
+    [SerializeField] private float acceleration = 11;
+
+    [SerializeField] private float maxSpeed = 10;
+
 
     private Collider col;
     private Rigidbody rb;
     private SwipeDetection inputDetection;
-    
+
     private float distanceToGround;
 
     private bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
@@ -31,27 +38,30 @@ public class PlayerCharacter : MonoBehaviour, ISlider, IJumper
     private void OnEnable()
     {
         inputDetection.OnSwipeUp += Jump;
+        inputDetection.OnSwipeDown += Slide;
     }
 
     private void OnDisable()
     {
         inputDetection.OnSwipeUp -= Jump;
+        inputDetection.OnSwipeDown -= Slide;
+    }
+
+    private void FixedUpdate()
+    {
+        Run();
     }
 
     #endregion
 
-    #region Slide Interface
 
-    public void Slide()
+    private void Slide()
     {
         throw new System.NotImplementedException();
     }
 
-    #endregion
 
-    #region Jump Interface
-
-    public void Jump()
+    private void Jump()
     {
         if (isGrounded)
         {
@@ -59,6 +69,10 @@ public class PlayerCharacter : MonoBehaviour, ISlider, IJumper
         }
     }
 
-    #endregion
-    
+
+    private void Run()
+    {
+        if (Mathf.Abs(rb.velocity.x) < maxSpeed)
+            rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
+    }
 }
