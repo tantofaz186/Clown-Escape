@@ -1,6 +1,7 @@
+using Interfaces;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : MonoBehaviour, IJumper, ISlider, IRunner, IAttacker
 {
     
     [SerializeField] private float jumpForce = 9.5f;
@@ -14,7 +15,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private float distanceToGround;
 
-    private bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
+    public bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
 
     #region Unity Events
 
@@ -50,13 +51,13 @@ public class PlayerCharacter : MonoBehaviour
     #endregion
 
 
-    private void Slide()
+    public void Slide()
     {
         throw new System.NotImplementedException();
     }
 
 
-    private void Jump()
+    public void Jump()
     {
         if (isGrounded)
         {
@@ -69,5 +70,15 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) < maxSpeed)
             rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
+    }
+
+    void IRunner.Run()
+    {
+        Run();
+    }
+
+    void IAttacker.Attack()
+    {
+        throw new System.NotImplementedException();
     }
 }
