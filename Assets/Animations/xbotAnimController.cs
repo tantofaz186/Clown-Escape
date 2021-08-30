@@ -17,15 +17,6 @@ namespace Animations
             inputDetection = SwipeDetection.Instance;
             
         }
-
-        public void StartSlide()
-        {
-            m_Animator.applyRootMotion = true;
-        }
-        public void EndSlide()
-        {
-            m_Animator.applyRootMotion = false;
-        }
         void SetRollTrigger()
         {
             m_Animator.SetTrigger(s_Roll);
