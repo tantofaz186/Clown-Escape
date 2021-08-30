@@ -1,4 +1,7 @@
-public interface ISlider
+namespace Interfaces
 {
-    void Slide();
+    public interface ISlider
+    {
+        void Slide();
+    }
 }

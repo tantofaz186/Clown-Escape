@@ -1,4 +1,7 @@
-public interface IRunner
+namespace Interfaces
 {
-  void Run();
+  public interface IRunner
+  {
+    void Run();
+  }
 }

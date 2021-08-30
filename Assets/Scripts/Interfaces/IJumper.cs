@@ -1,8 +1,8 @@
-
-using UnityEngine;
-
-public interface IJumper
+namespace Interfaces
 {
-    void Jump();
-    bool isGrounded { get; }
+    public interface IJumper
+    {
+        void Jump();
+        bool isGrounded { get; }
+    }
 }
