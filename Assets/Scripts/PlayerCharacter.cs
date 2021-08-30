@@ -1,7 +1,8 @@
 using Interfaces;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour, IJumper, ISlider, IRunner, IAttacker
+public class PlayerCharacter : MonoBehaviour, 
+    IJumper, ISlider, IRunner, IAttacker
 {
     
     [SerializeField] private float jumpForce = 9.5f;
