@@ -54,7 +54,8 @@ public class PlayerCharacter : MonoBehaviour,
 
     public void Slide()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("slided");
+        
     }
 
 
