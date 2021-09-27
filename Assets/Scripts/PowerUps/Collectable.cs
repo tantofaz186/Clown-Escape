@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace PowerUps
 {
-    public class Collectable : MonoBehaviour
+    public abstract class Collectable : MonoBehaviour
     {
-        protected virtual void Collect()
+        [SerializeField]protected PlayerCharacter player;
+
+        private void Awake()
         {
-            Debug.Log($"{name} foi coletado");
-            Destroy(gameObject);
+            player = FindObjectOfType<PlayerCharacter>();
         }
 
+        protected abstract void Collect();
+
+        //power ups na layer power up só interagem com o Player, portanto não é preciso checar o collider
         protected virtual void OnTriggerEnter(Collider other)
         {
             Collect();
+            Destroy(gameObject);
         }
     }
 }

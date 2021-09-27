@@ -58,7 +58,6 @@ public class PlayerCharacter : MonoBehaviour,
         
     }
 
-
     public void Jump()
     {
         if (isGrounded)
