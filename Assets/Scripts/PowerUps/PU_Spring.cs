@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PU_Spring : MonoBehaviour
+namespace PowerUps
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PU_Spring : Collectable
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
