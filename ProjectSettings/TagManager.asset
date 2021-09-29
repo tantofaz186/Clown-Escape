@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - "Obst\xE1culo"
+  - "Ch\xE3o"
+  - Power Up
+  - Inimigo
   - 
   - 
   - 
