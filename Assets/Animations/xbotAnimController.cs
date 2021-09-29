@@ -10,6 +10,7 @@ namespace Animations
 
         private static readonly int s_Slide = Animator.StringToHash("Slide");
         private static readonly int s_Roll = Animator.StringToHash("Roll");
+        private static readonly int s_Attack = Animator.StringToHash("Attack");
 
         // Start is called before the first frame update
         private void Awake()
@@ -26,11 +27,17 @@ namespace Animations
         {
             m_Animator.SetTrigger(s_Slide);
             
+        }        
+        void SetAttackTrigger()
+        {
+            m_Animator.SetTrigger(s_Attack);
+            
         }
         private void OnEnable()
         {
             inputDetection.OnSwipeLeft += SetRollTrigger;
             inputDetection.OnSwipeDown += SetSlideTrigger;
+            inputDetection.OnSwipeRight += SetAttackTrigger;
             
         }
 
@@ -38,6 +45,7 @@ namespace Animations
         {
             inputDetection.OnSwipeLeft -= SetRollTrigger;
             inputDetection.OnSwipeDown -= SetSlideTrigger;
+            inputDetection.OnSwipeRight -= SetAttackTrigger;
         }
         void Start()
         {
