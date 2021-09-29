@@ -2331,6 +2331,7 @@ MonoBehaviour:
   jumpForce: 9.5
   acceleration: 11
   maxSpeed: 10
+  weapon: {fileID: 5554169809678207743}
 --- !u!1 &8237318521902281958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,11 +2568,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4520969672307319666, guid: 186e892ae0c0bdf46ae9a036def7cb65,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f4ee07762e9fc8f4c8af7e49cfb2a2ab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186e892ae0c0bdf46ae9a036def7cb65, type: 3}
 --- !u!4 &5070965972628787269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
+    type: 3}
+  m_PrefabInstance: {fileID: 7541604703433328728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5554169809678207743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2719410592168182439, guid: 186e892ae0c0bdf46ae9a036def7cb65,
     type: 3}
   m_PrefabInstance: {fileID: 7541604703433328728}
   m_PrefabAsset: {fileID: 0}

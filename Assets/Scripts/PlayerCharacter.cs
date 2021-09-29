@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 
@@ -9,11 +11,13 @@ public class PlayerCharacter : MonoBehaviour,
     [SerializeField] private float acceleration = 11;
     [SerializeField] private float maxSpeed = 10;
 
-
     private Collider col;
     private Rigidbody rb;
     private SwipeDetection inputDetection;
-
+    
+    [SerializeField] private GameObject weapon;
+    private Collider weaponCol;
+    
     private float distanceToGround;
 
     public bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
@@ -29,6 +33,7 @@ public class PlayerCharacter : MonoBehaviour,
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        weaponCol = weapon.GetComponent<Collider>();
         distanceToGround = col.bounds.extents.y;
     }
 
@@ -42,6 +47,7 @@ public class PlayerCharacter : MonoBehaviour,
     {
         inputDetection.OnSwipeUp -= Jump;
         inputDetection.OnSwipeDown -= Slide;
+        
     }
 
     private void FixedUpdate()
@@ -81,5 +87,18 @@ public class PlayerCharacter : MonoBehaviour,
     void IAttacker.Attack()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void ChangeMaxSpeed(float maxSpeedModifier, float time)
+    {
+        StartCoroutine(ChangeMaxSpeedCourotine(maxSpeedModifier, time));
+    }
+    IEnumerator ChangeMaxSpeedCourotine(float maxSpeedModifier, float time)
+    {
+        maxSpeed += maxSpeedModifier;
+        Debug.Log("max speed aumentada");
+        yield return new WaitForSeconds(time);
+        maxSpeed -= maxSpeedModifier;
+        Debug.Log("max speed reduzida");
     }
 }
