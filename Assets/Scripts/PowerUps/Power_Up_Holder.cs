@@ -10,7 +10,6 @@ namespace PowerUps
         [SerializeField] private Collectable powerUp;
         private void OnTriggerEnter(Collider other)
         {
-            
             SpawnPowerUp();
             Destroy(gameObject);
         }
