@@ -299,6 +299,16 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: -3341545827482432521, guid: 598376d0de549d845a09323cda63511a,
+        type: 3}
+      propertyPath: baseCol
+      value: 
+      objectReference: {fileID: 1490927387}
+    - target: {fileID: -3341545827482432521, guid: 598376d0de549d845a09323cda63511a,
+        type: 3}
+      propertyPath: slideCol
+      value: 
+      objectReference: {fileID: 1490927393}
     - target: {fileID: 3428768131595223567, guid: 598376d0de549d845a09323cda63511a,
         type: 3}
       propertyPath: m_Center.y
@@ -822,6 +832,8 @@ MonoBehaviour:
   jumpForce: 9.5
   acceleration: 11
   maxSpeed: 10
+  baseCol: {fileID: 0}
+  slideCol: {fileID: 0}
   weapon: {fileID: 0}
 --- !u!1 &570288213
 GameObject:
@@ -1525,6 +1537,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 132686742}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &1490927387 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 3428768131595223567, guid: 598376d0de549d845a09323cda63511a,
+    type: 3}
+  m_PrefabInstance: {fileID: 132686742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1490927393
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490927386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.12
+  m_Height: 0.54027736
+  m_Direction: 1
+  m_Center: {x: -6.217259e-17, y: 0.22513872, z: 0.020000003}
 --- !u!1 &1604591572
 GameObject:
   m_ObjectHideFlags: 0
