@@ -9,6 +9,7 @@ public class SwipeDetection : Singleton<SwipeDetection>
     public event Action OnSwipeDown;
     public event Action OnSwipeLeft;
     public event Action OnSwipeRight;
+    public event Action OnTap;
 
 
     [SerializeField] private float maxTime = 1f;
@@ -24,7 +25,9 @@ public class SwipeDetection : Singleton<SwipeDetection>
 
     private bool isSwipe =>
         Vector3.Distance(endPos, startPos) >= minimumDistance && endTime - startTime <= maxTime;
-
+    private bool isTap =>
+        Vector3.Distance(endPos, startPos) < minimumDistance && endTime - startTime <= maxTime;
+    
     private void Awake()
     {
         inputManager = InputManager.Instance;
@@ -81,6 +84,10 @@ public class SwipeDetection : Singleton<SwipeDetection>
                 Debug.Log("right");
                 OnSwipeRight?.Invoke();
             }
+        }
+        else if (isTap)
+        {
+            OnTap?.Invoke();
         }
     }
 }
