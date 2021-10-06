@@ -1525,6 +1525,63 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 132686742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1604591572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604591575}
+  - component: {fileID: 1604591574}
+  - component: {fileID: 1604591573}
+  m_Layer: 6
+  m_Name: Finish Line
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1604591573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604591572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387ffc6b06aa2cb428b0c330d49f5414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1604591574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604591572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 25.909948, z: 46.040016}
+  m_Center: {x: 0, y: 7.176078, z: 0}
+--- !u!4 &1604591575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604591572}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -80.7, y: 1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695743240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d37f98dddbbe84bb265c87250ab045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelFinishLine: {fileID: 1604591573}
 --- !u!4 &2030472430
 Transform:
   m_ObjectHideFlags: 0
@@ -1799,7 +1857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4838300573000113832
 PrefabInstance:
