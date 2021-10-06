@@ -16,7 +16,6 @@ namespace Animations
         private void Awake()
         {
             inputDetection = SwipeDetection.Instance;
-            
         }
         void SetRollTrigger()
         {
@@ -27,7 +26,11 @@ namespace Animations
         {
             m_Animator.SetTrigger(s_Slide);
             
-        }        
+        }
+        public void EndSlide()
+        {
+            m_Animator.ResetTrigger(s_Slide);
+        }
         void SetAttackTrigger()
         {
             m_Animator.SetTrigger(s_Attack);
@@ -35,7 +38,6 @@ namespace Animations
         }
         private void OnEnable()
         {
-            inputDetection.OnSwipeLeft += SetRollTrigger;
             inputDetection.OnSwipeDown += SetSlideTrigger;
             inputDetection.OnSwipeRight += SetAttackTrigger;
             
@@ -43,19 +45,12 @@ namespace Animations
 
         private void OnDisable()
         {
-            inputDetection.OnSwipeLeft -= SetRollTrigger;
             inputDetection.OnSwipeDown -= SetSlideTrigger;
             inputDetection.OnSwipeRight -= SetAttackTrigger;
         }
         void Start()
         {
             m_Animator = GetComponent<Animator>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

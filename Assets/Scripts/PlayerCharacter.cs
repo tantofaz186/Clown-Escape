@@ -4,14 +4,15 @@ using Interfaces;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour, 
-    IJumper, ISlider, IRunner, IAttacker
+    IJumper, IRunner, IAttacker
 {
     
     [SerializeField] private float jumpForce = 9.5f;
     [SerializeField] private float acceleration = 11;
     [SerializeField] private float maxSpeed = 10;
-
-    private Collider col;
+    [SerializeField] private Collider baseCol;
+    [SerializeField] private Collider slideCol;
+    
     private Rigidbody rb;
     private SwipeDetection inputDetection;
     
@@ -32,22 +33,18 @@ public class PlayerCharacter : MonoBehaviour,
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
         weaponCol = weapon.GetComponent<Collider>();
-        distanceToGround = col.bounds.extents.y;
+        distanceToGround = baseCol.bounds.extents.y;
+        
     }
-
     private void OnEnable()
     {
         inputDetection.OnSwipeUp += Jump;
-        inputDetection.OnSwipeDown += Slide;
     }
 
     private void OnDisable()
     {
         inputDetection.OnSwipeUp -= Jump;
-        inputDetection.OnSwipeDown -= Slide;
-        
     }
 
     private void FixedUpdate()
@@ -56,14 +53,17 @@ public class PlayerCharacter : MonoBehaviour,
     }
 
     #endregion
-
-
-    public void Slide()
+    
+    public void BeginSlide()
     {
-        Debug.Log("slided");
-        
+        baseCol.enabled = false;
     }
 
+    public void EndSlide()
+    {
+        baseCol.enabled = true;
+    }
+    
     public void Jump()
     {
         if (isGrounded)
