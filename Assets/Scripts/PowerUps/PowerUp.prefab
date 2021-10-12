@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004774018888518420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,5 +112,5 @@ MonoBehaviour:
   player: {fileID: 0}
   speedChange: 5
   effectTime: 5
-  pickUpParticles: {fileID: 1920601739041852594, guid: 73ce2491e2608b0418537dbb0c0ee304,
+  pickUpParticles: {fileID: -8412542833896001170, guid: 4378f848cac22904691cc26a4db98403,
     type: 3}

@@ -13,7 +13,7 @@ namespace PowerUps
         {
             Instantiate(pickUpParticles);
             player.ChangeMaxSpeed(speedChange, effectTime);
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }
