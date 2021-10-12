@@ -7,13 +7,13 @@ namespace PowerUps
     {
         [SerializeField] private float speedChange;
         [SerializeField] private float effectTime;
-        [SerializeField] private ParticleSystem pickUpParticles;
+        [SerializeField] private PowerUpEffect pickUpParticles;
         
         protected override void Collect()
         {
             Instantiate(pickUpParticles);
-            Destroy(pickUpParticles, pickUpParticles.main.duration);
             player.ChangeMaxSpeed(speedChange, effectTime);
+            Destroy(gameObject);
         }
     }
 }
