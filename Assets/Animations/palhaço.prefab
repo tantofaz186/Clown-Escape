@@ -1186,6 +1186,7 @@ GameObject:
   - component: {fileID: -3341545827482432521}
   - component: {fileID: -8518991003773295277}
   - component: {fileID: 3428768131595223567}
+  - component: {fileID: 6656024358587444823}
   m_Layer: 3
   m_Name: "palha\xE7o"
   m_TagString: Player
@@ -1257,6 +1258,8 @@ MonoBehaviour:
   jumpForce: 9.5
   acceleration: 11
   maxSpeed: 10
+  baseCol: {fileID: 3428768131595223567}
+  slideCol: {fileID: 6656024358587444823}
   weapon: {fileID: 1865679821763055791}
 --- !u!54 &-8518991003773295277
 Rigidbody:
@@ -1272,7 +1275,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &3428768131595223567
 CapsuleCollider:
@@ -1287,7 +1290,21 @@ CapsuleCollider:
   m_Radius: 0.12
   m_Height: 0.81
   m_Direction: 1
-  m_Center: {x: 0, y: 0.41, z: 0.02}
+  m_Center: {x: 0, y: 0.36, z: 0.02}
+--- !u!136 &6656024358587444823
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364691902906278501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.12
+  m_Height: 0.54027736
+  m_Direction: 1
+  m_Center: {x: -6.217259e-17, y: 0.22513872, z: 0.020000003}
 --- !u!1 &5366995145424574597
 GameObject:
   m_ObjectHideFlags: 0
