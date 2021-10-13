@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Controllers;
 using UnityEngine;
 
 namespace Animations
@@ -22,12 +23,24 @@ namespace Animations
         {
             inputDetection = SwipeDetection.Instance;
         }
+                
+        void SetSlideTrigger()
+        {
+            m_Animator.SetTrigger(s_Slide);
+        }
+        void SetAttackTrigger()
+        {
+            m_Animator.SetTrigger(s_Attack);
+        }
         void SetJumpTrigger()
         {
             m_Animator.SetTrigger(s_Jump);
+        }
+
+        public void OnBeginJump()
+        {
             StartCoroutine(WaitUntilGrounded());
         }
-        
         private IEnumerator WaitUntilGrounded()
         {
             yield return new WaitUntil(() => !m_Player.isGrounded);
@@ -36,21 +49,7 @@ namespace Animations
             m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
             Debug.Log("player is now grounded");
         }
-
-        void SetSlideTrigger()
-        {
-            m_Animator.SetTrigger(s_Slide);
-            
-        }
-        public void EndSlide()
-        {
-            m_Animator.ResetTrigger(s_Slide);
-        }
-        void SetAttackTrigger()
-        {
-            m_Animator.SetTrigger(s_Attack);
-            
-        }
+        
         private void OnEnable()
         {
             inputDetection.OnSwipeDown += SetSlideTrigger;
@@ -70,7 +69,6 @@ namespace Animations
             m_Animator = GetComponent<Animator>();
             m_Player = GetComponent<PlayerCharacter>();
             m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
-
         }
     }
 }

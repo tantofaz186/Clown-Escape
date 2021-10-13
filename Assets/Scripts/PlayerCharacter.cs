@@ -24,8 +24,9 @@ public class PlayerCharacter : MonoBehaviour,
     public float distanceToGround;
 
     public bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
-
-
+    public float rb_Speed => rb.velocity.x;
+    public float MaxSpeed => maxSpeed;
+    
     #region Unity Events
 
     private void Awake()
