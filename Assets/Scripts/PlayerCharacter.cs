@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Animations;
 using Interfaces;
 using UnityEngine;
 
@@ -14,20 +16,21 @@ public class PlayerCharacter : MonoBehaviour,
     [SerializeField] private Collider slideCol;
     
     private Rigidbody rb;
-    private SwipeDetection inputDetection;
+    //private SwipeDetection inputDetection;
     
     [SerializeField] private GameObject weapon;
     private Collider weaponCol;
     
-    private float distanceToGround;
+    public float distanceToGround;
 
     public bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
+
 
     #region Unity Events
 
     private void Awake()
     {
-        inputDetection = SwipeDetection.Instance;
+        //inputDetection = SwipeDetection.Instance;
     }
 
     private void Start()
@@ -39,12 +42,11 @@ public class PlayerCharacter : MonoBehaviour,
     }
     private void OnEnable()
     {
-        inputDetection.OnSwipeUp += Jump;
     }
 
     private void OnDisable()
     {
-        inputDetection.OnSwipeUp -= Jump;
+
     }
 
     private void FixedUpdate()
@@ -63,7 +65,10 @@ public class PlayerCharacter : MonoBehaviour,
     {
         baseCol.enabled = true;
     }
-    
+    public void OnBeginJump()
+    {
+        Jump();
+    }
     public void Jump()
     {
         if (isGrounded)
@@ -101,4 +106,5 @@ public class PlayerCharacter : MonoBehaviour,
         maxSpeed -= maxSpeedModifier;
         Debug.Log("max speed reduzida");
     }
+    
 }

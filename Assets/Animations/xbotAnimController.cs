@@ -1,11 +1,15 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Animations
 {
+    [RequireComponent(typeof(PlayerCharacter))]
+    [RequireComponent(typeof(Animator))]
     public class xbotAnimController : MonoBehaviour
     {
         private Animator m_Animator;
+        private PlayerCharacter m_Player;
         private SwipeDetection inputDetection;
 
         private static readonly int s_Slide = Animator.StringToHash("Slide");
@@ -21,7 +25,18 @@ namespace Animations
         void SetJumpTrigger()
         {
             m_Animator.SetTrigger(s_Jump);
+            StartCoroutine(WaitUntilGrounded());
         }
+        
+        private IEnumerator WaitUntilGrounded()
+        {
+            yield return new WaitUntil(() => !m_Player.isGrounded);
+            m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
+            yield return new WaitUntil(() => m_Player.isGrounded);
+            m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
+            Debug.Log("player is now grounded");
+        }
+
         void SetSlideTrigger()
         {
             m_Animator.SetTrigger(s_Slide);
@@ -43,7 +58,6 @@ namespace Animations
             inputDetection.OnSwipeUp += SetJumpTrigger;
 
         }
-
         private void OnDisable()
         {
             inputDetection.OnSwipeDown -= SetSlideTrigger;
@@ -54,6 +68,9 @@ namespace Animations
         void Start()
         {
             m_Animator = GetComponent<Animator>();
+            m_Player = GetComponent<PlayerCharacter>();
+            m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
+
         }
     }
 }
