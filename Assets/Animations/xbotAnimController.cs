@@ -17,13 +17,19 @@ namespace Animations
         private static readonly int s_Attack = Animator.StringToHash("Attack");
         private static readonly int s_Jump = Animator.StringToHash("Jump");
         private static readonly int s_IsGrounded = Animator.StringToHash("IsGrounded");
+        private static readonly int s_Roll = Animator.StringToHash("Roll");
 
         // Start is called before the first frame update
         private void Awake()
         {
             inputDetection = SwipeDetection.Instance;
+            m_Animator = GetComponent<Animator>();
+            m_Player = GetComponent<PlayerCharacter>();
         }
-                
+        void SetRollTrigger()
+        {
+            m_Animator.SetTrigger(s_Roll);
+        }        
         void SetSlideTrigger()
         {
             m_Animator.SetTrigger(s_Slide);
@@ -55,6 +61,7 @@ namespace Animations
             inputDetection.OnSwipeDown += SetSlideTrigger;
             inputDetection.OnSwipeRight += SetAttackTrigger;
             inputDetection.OnSwipeUp += SetJumpTrigger;
+            m_Player.OnHitWall += SetRollTrigger;
 
         }
         private void OnDisable()
@@ -62,12 +69,12 @@ namespace Animations
             inputDetection.OnSwipeDown -= SetSlideTrigger;
             inputDetection.OnSwipeRight -= SetAttackTrigger;
             inputDetection.OnSwipeUp -= SetJumpTrigger;
+            m_Player.OnHitWall -= SetRollTrigger;
+
 
         }
         void Start()
         {
-            m_Animator = GetComponent<Animator>();
-            m_Player = GetComponent<PlayerCharacter>();
             m_Animator.SetBool(s_IsGrounded, m_Player.isGrounded);
         }
     }

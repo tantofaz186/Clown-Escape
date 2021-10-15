@@ -13,7 +13,7 @@ public class AnimationSpeed : StateMachineBehaviour
 
     private PlayerCharacter player;
     private static readonly int s_SpeedMultiplier = Animator.StringToHash("SpeedMultiplier");
-
+    [SerializeField] private float constantMultiplier = 1;
     private void Awake()
     {
         player = FindObjectOfType<PlayerCharacter>();
@@ -23,7 +23,7 @@ public class AnimationSpeed : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetFloat(s_SpeedMultiplier,Mathf.Abs(player.rb_Speed / player.MaxSpeed));
+        animator.SetFloat(s_SpeedMultiplier, constantMultiplier * Mathf.Abs(player.rb_Speed / player.MaxSpeed));
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -8,7 +8,8 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour, 
     IJumper, IRunner, IAttacker
 {
-    
+
+    public event Action OnHitWall;
     [SerializeField] private float jumpForce = 9.5f;
     [SerializeField] private float acceleration = 11;
     [SerializeField] private float maxSpeed = 10;
@@ -107,5 +108,13 @@ public class PlayerCharacter : MonoBehaviour,
         maxSpeed -= maxSpeedModifier;
         Debug.Log("max speed reduzida");
     }
-    
+
+    public void HitWall()
+    {
+        Debug.Log("hit wall");
+        rb.velocity = rb.velocity / 16;
+        rb.Sleep();
+        rb.WakeUp();
+        OnHitWall?.Invoke();
+    }
 }

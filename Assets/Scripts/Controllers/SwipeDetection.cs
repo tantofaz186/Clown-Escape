@@ -58,6 +58,7 @@ namespace Controllers
             DetectSwipeType();
         }
 
+
         private void DetectSwipeType()
         {
             if (isSwipe)
@@ -89,6 +90,10 @@ namespace Controllers
             {
                 OnTap?.Invoke();
             }
+        }
+        public void ForceSwipe(Action swipe)
+        {
+            swipe?.Invoke();
         }
     }
 }
