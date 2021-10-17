@@ -16,13 +16,13 @@ namespace Controllers
 
         private void OnEnable()
         {
-            Enemy.CollidedWithCharacter += GameOver;
+            GameOverOnCollision.CollidedWithCharacter += GameOver;
             LevelFinishLine.OnFinish += GameWin;
         }
 
         private void OnDisable()
         {
-            Enemy.CollidedWithCharacter -= GameOver;
+            GameOverOnCollision.CollidedWithCharacter -= GameOver;
             LevelFinishLine.OnFinish -= GameWin;
         }
 
