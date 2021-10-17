@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ namespace Controllers
         [SerializeField] private GameObject MainMenuScreen;
         [SerializeField] private GameObject GameWinScreen;
         [SerializeField] private GameObject GameOverScreen;
-
+        
         private void OnEnable()
         {
             SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
@@ -24,21 +25,22 @@ namespace Controllers
 
         public void StartGame()
         {
+            DisableAllScreens();
             if (SceneManager.GetSceneByBuildIndex(1).isLoaded)
             {
-                SceneManager.sceneUnloaded += WaitUntilLevelIsLoaded;
+                SceneManager.sceneUnloaded += WaitUntilLevelIsUnloaded;
                 SceneManager.UnloadSceneAsync(1);
             }
             else
             {
-                SceneManager.LoadSceneAsync(1);
+                SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
             }
         }
 
-        private void WaitUntilLevelIsLoaded(Scene unloadedScene)
+        private void WaitUntilLevelIsUnloaded(Scene unloadedScene)
         {
-            SceneManager.sceneUnloaded -= WaitUntilLevelIsLoaded;
-            SceneManager.LoadSceneAsync(unloadedScene.buildIndex);
+            SceneManager.sceneUnloaded -= WaitUntilLevelIsUnloaded;
+            SceneManager.LoadSceneAsync(unloadedScene.buildIndex, LoadSceneMode.Additive);
         }
 
 
@@ -68,6 +70,7 @@ namespace Controllers
 
         public void MainMenu()
         {
+            SceneManager.UnloadSceneAsync(1);
             DisableAllScreens();
             MainMenuScreen.SetActive(true);
         }
