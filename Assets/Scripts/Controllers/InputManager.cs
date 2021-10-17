@@ -31,31 +31,31 @@ namespace Controllers
             playerInput.Enable();
             playerInput.Touch.PrimaryContact.started += StartedPrimaryTouch;
             playerInput.Touch.PrimaryContact.canceled += EndedPrimaryTouch;
+            playerInput.MousePort.PrimaryContact.started += StartedPrimaryTouchWithMouse;
+            playerInput.MousePort.PrimaryContact.canceled += EndedPrimaryTouchWithMouse;
             playerInput.TecladoPort.Teclas.performed += PressedKeyboardKey;
         }
+
 
         private void OnDisable()
         {
             playerInput.Disable();
             playerInput.Touch.PrimaryContact.started -= StartedPrimaryTouch;
             playerInput.Touch.PrimaryContact.canceled -=EndedPrimaryTouch;
+            playerInput.MousePort.PrimaryContact.started -= StartedPrimaryTouchWithMouse;
+            playerInput.MousePort.PrimaryContact.canceled -= EndedPrimaryTouchWithMouse;
             playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;
         }
-    
-        private void Start()
-        {
 
-
-        }
-
-        private void PressedKeyboardKey(InputAction.CallbackContext context) =>
-            OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
-        
+        private void StartedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
+            OnStartTouch?.Invoke(playerInput.MousePort.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
+        private void EndedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
+            OnEndTouch?.Invoke(playerInput.MousePort.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
         private void StartedPrimaryTouch(InputAction.CallbackContext context)=>
             OnStartTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
-    
         private void EndedPrimaryTouch(InputAction.CallbackContext context) =>
             OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
-    
+        private void PressedKeyboardKey(InputAction.CallbackContext context) =>
+            OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
     }
 }

@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class UICamera : MonoBehaviour
 {
-    private Camera camera;
+    private Camera m_Camera;
     private AudioListener listener;
 
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        m_Camera = GetComponent<Camera>();
         listener = GetComponent<AudioListener>();
     }
 
@@ -27,6 +27,6 @@ public class UICamera : MonoBehaviour
     }
     private void DisableComponents(Scene oldScene, Scene newScene)
     {
-        camera.enabled = listener.enabled = newScene == gameObject.scene;
+        m_Camera.enabled = listener.enabled = newScene == gameObject.scene;
     }
 }
