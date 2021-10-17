@@ -59,6 +59,77 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Teclado Port"",
+            ""id"": ""0f47e923-87ce-4d0b-8781-0a9729013ccf"",
+            ""actions"": [
+                {
+                    ""name"": ""Teclas"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""69a3e163-4328-4da1-94b7-64a7960eea13"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""29ae9799-6690-476a-8c79-acd1fd8a6173"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ab7bba5-cc17-4867-8dfb-7d79a7eb3377"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""874157da-07a2-48f6-81b4-e208eb8559d6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f316204f-e02a-4638-8f76-562bda11fb14"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15eda61c-2376-444a-896d-1fe89c7f64f4"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -67,6 +138,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
         m_Touch_PrimaryContact = m_Touch.FindAction("Primary Contact", throwIfNotFound: true);
         m_Touch_PrimaryPosition = m_Touch.FindAction("Primary Position", throwIfNotFound: true);
+        // Teclado Port
+        m_TecladoPort = asset.FindActionMap("Teclado Port", throwIfNotFound: true);
+        m_TecladoPort_Teclas = m_TecladoPort.FindAction("Teclas", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -153,9 +227,46 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public TouchActions @Touch => new TouchActions(this);
+
+    // Teclado Port
+    private readonly InputActionMap m_TecladoPort;
+    private ITecladoPortActions m_TecladoPortActionsCallbackInterface;
+    private readonly InputAction m_TecladoPort_Teclas;
+    public struct TecladoPortActions
+    {
+        private @PlayerInput m_Wrapper;
+        public TecladoPortActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Teclas => m_Wrapper.m_TecladoPort_Teclas;
+        public InputActionMap Get() { return m_Wrapper.m_TecladoPort; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TecladoPortActions set) { return set.Get(); }
+        public void SetCallbacks(ITecladoPortActions instance)
+        {
+            if (m_Wrapper.m_TecladoPortActionsCallbackInterface != null)
+            {
+                @Teclas.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+                @Teclas.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+                @Teclas.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+            }
+            m_Wrapper.m_TecladoPortActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Teclas.started += instance.OnTeclas;
+                @Teclas.performed += instance.OnTeclas;
+                @Teclas.canceled += instance.OnTeclas;
+            }
+        }
+    }
+    public TecladoPortActions @TecladoPort => new TecladoPortActions(this);
     public interface ITouchActions
     {
         void OnPrimaryContact(InputAction.CallbackContext context);
         void OnPrimaryPosition(InputAction.CallbackContext context);
+    }
+    public interface ITecladoPortActions
+    {
+        void OnTeclas(InputAction.CallbackContext context);
     }
 }
