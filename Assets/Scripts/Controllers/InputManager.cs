@@ -29,18 +29,22 @@ namespace Controllers
         private void OnEnable()
         {
             playerInput.Enable();
+            playerInput.Touch.PrimaryContact.started += StartedPrimaryTouch;
+            playerInput.Touch.PrimaryContact.canceled += EndedPrimaryTouch;
+            playerInput.TecladoPort.Teclas.performed += PressedKeyboardKey;
         }
 
         private void OnDisable()
         {
             playerInput.Disable();
+            playerInput.Touch.PrimaryContact.started -= StartedPrimaryTouch;
+            playerInput.Touch.PrimaryContact.canceled -=EndedPrimaryTouch;
+            playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;
         }
     
         private void Start()
         {
-            playerInput.Touch.PrimaryContact.started += context => StartedPrimaryTouch(context);
-            playerInput.Touch.PrimaryContact.canceled += context => EndedPrimaryTouch(context);
-            playerInput.TecladoPort.Teclas.performed += context => PressedKeyboardKey(context);
+
 
         }
 
