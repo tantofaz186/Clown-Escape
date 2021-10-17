@@ -3,9 +3,15 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class GameEventHandler : MonoBehaviour
+    public class GameEventHandler : Singleton<GameEventHandler>
     {
         [SerializeField]private FinishLine LevelFinishLine;
+        private UIController m_UIController;
+        private void Awake()
+        {
+            m_UIController = UIController.Instance;
+        }
+
         #region Event Subscription
 
         private void OnEnable()
@@ -24,11 +30,11 @@ namespace Controllers
 
         private void GameOver()
         {
-            throw new NotImplementedException();
+            m_UIController.GameOver();
         }
         private void GameWin()
         {
-            throw new NotImplementedException();
+            m_UIController.GameWin();
         }
     }
 }
