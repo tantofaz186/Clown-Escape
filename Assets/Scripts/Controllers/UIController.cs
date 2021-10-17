@@ -64,6 +64,7 @@ namespace Controllers
 
         public void GameOver()
         {
+            SceneManager.UnloadSceneAsync(1);
             DisableAllScreens();
             GameOverScreen.SetActive(true);
         }

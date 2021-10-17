@@ -6,14 +6,16 @@ using UnityEngine;
 public class GameOverOnCollision : MonoBehaviour
 {
     protected static PlayerCharacter player;
-    protected Collider playerCollider;
+    protected static Collider playerCollider;
     public static event Action CollidedWithCharacter;
 
-    private void Awake()
+    protected void Awake()
     {
-        if(player == null)
+        if (player == null)
+        {
             player = FindObjectOfType<PlayerCharacter>();
-        playerCollider = player.GetComponent<Collider>();
+            playerCollider = player.GetComponent<Collider>();
+        }
     }
     protected void OnTriggerEnter(Collider other)
     {

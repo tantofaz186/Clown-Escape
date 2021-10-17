@@ -49,14 +49,12 @@ namespace Controllers
         {
             startPos = pos;
             startTime = time;
-            Debug.Log($"start time {startTime}\nstart pos {startPos}");
         }
 
         private void SwipeEnd(Vector2 pos, float time)
         {
             endPos = pos;
             endTime = time;
-            Debug.Log($"end time {endTime}\nend pos {endPos}");
             DetectSwipeType();
         }
 

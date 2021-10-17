@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1640157553167344272}
   - component: {fileID: 2451878347467056436}
   - component: {fileID: 9040839873370965417}
+  - component: {fileID: 8629769407270675920}
+  - component: {fileID: 9036343517725154367}
   m_Layer: 9
   m_Name: Espinhos
   m_TagString: Untagged
@@ -81,3 +83,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8629769407270675920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157829683395144972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7530f75364547da47a764a5365e36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &9036343517725154367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157829683395144972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.1905727, y: 0.33665657, z: 0.43238413}
+  m_Center: {x: -0.027882576, y: 0.06751731, z: -0.022420555}
