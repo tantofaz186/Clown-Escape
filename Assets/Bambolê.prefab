@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1696483458473233065}
   - component: {fileID: 4138779112340063098}
   - component: {fileID: 8077190175750085303}
+  - component: {fileID: 2606361397231168382}
+  - component: {fileID: 4378121719344923926}
   m_Layer: 6
   m_Name: "Bambol\xEA"
   m_TagString: Untagged
@@ -81,3 +83,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2606361397231168382
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137062124897922061}
+  m_Material: {fileID: 13400000, guid: a54c8ca3cdc00aa44a0f7c367b89b363, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3391344630859951313, guid: a1257275f4c72a24bacda6fd4b910085, type: 3}
+--- !u!54 &4378121719344923926
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137062124897922061}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

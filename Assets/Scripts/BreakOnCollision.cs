@@ -13,6 +13,7 @@ public class BreakOnCollision : MonoBehaviour,IBreakable
     {
         audioSource = AudioManager.Instance.audioSource;
     }
+    
 
     private void OnCollisionEnter(Collision other)
     {
@@ -23,7 +24,8 @@ public class BreakOnCollision : MonoBehaviour,IBreakable
 
     public void Break()
     {
-        audioSource.PlayOneShot(breakSound);
+        if(!audioSource.isPlaying)
+            audioSource.PlayOneShot(breakSound);
         Destroy(gameObject);
     }
 }

@@ -9,13 +9,15 @@ public class PlayerCharacter : MonoBehaviour,
     IJumper, IRunner, IAttacker
 {
 
+    private Animator m_Animator;
+    private static readonly int s_Attacking = Animator.StringToHash("Attacking");
     public event Action OnHitWall;
     [SerializeField] private float jumpForce = 9.5f;
     [SerializeField] private float acceleration = 11;
     [SerializeField] private float maxSpeed = 10;
     [SerializeField] private Collider baseCol;
     [SerializeField] private Collider slideCol;
-    
+
     private Rigidbody rb;
     //private SwipeDetection inputDetection;
     
@@ -23,6 +25,7 @@ public class PlayerCharacter : MonoBehaviour,
     private Collider weaponCol;
     
     public float distanceToGround;
+
 
     public bool isGrounded => Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
     public float rb_Speed => rb.velocity.x;
@@ -33,6 +36,7 @@ public class PlayerCharacter : MonoBehaviour,
     private void Awake()
     {
         //inputDetection = SwipeDetection.Instance;
+        m_Animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -112,9 +116,24 @@ public class PlayerCharacter : MonoBehaviour,
     public void HitWall()
     {
         Debug.Log("hit wall");
-        rb.velocity = rb.velocity / 16;
-        rb.Sleep();
-        rb.WakeUp();
-        OnHitWall?.Invoke();
+        if (!isGrounded)
+        {
+            rb.AddForce((-1 * transform.forward)/ 16, ForceMode.Impulse);
+            rb.Sleep();
+            rb.WakeUp();
+            OnHitWall?.Invoke();
+        }
+        if (!m_Animator.GetBool(s_Attacking))
+        {        
+            rb.velocity /= 16;
+            rb.Sleep();
+            rb.WakeUp();
+            OnHitWall?.Invoke();
+        }
+        else
+        {
+            Debug.Log("attacking");
+        }
+        
     }
 }

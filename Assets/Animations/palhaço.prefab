@@ -1261,6 +1261,7 @@ MonoBehaviour:
   baseCol: {fileID: 3428768131595223567}
   slideCol: {fileID: 6656024358587444823}
   weapon: {fileID: 1865679821763055791}
+  distanceToGround: 0
 --- !u!54 &-8518991003773295277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1941,7 +1942,7 @@ PrefabInstance:
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0025661848
+      value: 0.00501
       objectReference: {fileID: 0}
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}
@@ -1951,17 +1952,17 @@ PrefabInstance:
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000571
+      value: 0.000702
       objectReference: {fileID: 0}
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00027
+      value: 0.000265
       objectReference: {fileID: 0}
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000236
+      value: -0.000289
       objectReference: {fileID: 0}
     - target: {fileID: 3384060575988242461, guid: 186e892ae0c0bdf46ae9a036def7cb65,
         type: 3}

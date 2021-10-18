@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4515626428256511561}
   - component: {fileID: 753835854967580930}
   - component: {fileID: -1177746809348725548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sapato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speedChange: 12
-  effectTime: 3
+  speedChange: 1
+  effectTime: 2
   pickUpParticles: {fileID: -8412542833896001170, guid: 4378f848cac22904691cc26a4db98403,
     type: 3}
 --- !u!114 &753835854967580930
@@ -124,7 +124,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7074356022522100096}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.17635097, y: 0.14694318, z: 0.4229203}

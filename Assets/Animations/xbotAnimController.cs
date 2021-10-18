@@ -71,7 +71,6 @@ namespace Animations
             inputDetection.OnSwipeUp -= SetJumpTrigger;
             m_Player.OnHitWall -= SetRollTrigger;
 
-
         }
         void Start()
         {
