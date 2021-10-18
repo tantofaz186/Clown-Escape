@@ -1,54 +1,61 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[DefaultExecutionOrder(-1)]
-public class InputManager : Singleton<InputManager>
+namespace Controllers
 {
+    [DefaultExecutionOrder(-1)]
+    public class InputManager : Singleton<InputManager>
+    {
+        #region Events
+        public delegate void StartedTouch(Vector2 pos, float time);
+        public event StartedTouch OnStartTouch;
+        public delegate void EndedTouch(Vector2 pos, float time);
+        public event EndedTouch OnEndTouch;
 
-    #region events
+        public delegate void PressedKey(Key key);
+
+        public event PressedKey OnKeyPress;
+
+        #endregion
+
     
-    public delegate void StartedTouch(Vector2 pos, float time);
-    public event StartedTouch OnStartTouch;
-    public delegate void EndedTouch(Vector2 pos, float time);
-    public event EndedTouch OnEndTouch;
-
-    #endregion
+        private PlayerInput playerInput;
     
-    
-    private PlayerInput playerInput;
-    private Camera mainCamera;
-    private void Awake()
-    {
-        playerInput = new PlayerInput();
-        mainCamera = Camera.main;
-    }
+        private void Awake()
+        {
+            playerInput = new PlayerInput();
+        }
 
-    private void OnEnable()
-    {
-        playerInput.Enable();
-    }
+        private void OnEnable()
+        {
+            playerInput.Enable();
+            playerInput.Touch.PrimaryContact.started += StartedPrimaryTouch;
+            playerInput.Touch.PrimaryContact.canceled += EndedPrimaryTouch;
+            playerInput.MousePort.PrimaryContact.started += StartedPrimaryTouchWithMouse;
+            playerInput.MousePort.PrimaryContact.canceled += EndedPrimaryTouchWithMouse;
+            playerInput.TecladoPort.Teclas.performed += PressedKeyboardKey;
+        }
 
-    private void OnDisable()
-    {
-        playerInput.Disable();
-    }
-    
-    private void Start()
-    {
-        playerInput.Touch.PrimaryContact.started += context => StartedPrimaryTouch(context);
-        playerInput.Touch.PrimaryContact.canceled += context => EndedPrimaryTouch(context);
-    }
 
-    private void StartedPrimaryTouch(InputAction.CallbackContext context)
-    {
-        OnStartTouch?.Invoke(mainCamera.ScreenToWorldPoint(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
-    }
+        private void OnDisable()
+        {
+            playerInput.Disable();
+            playerInput.Touch.PrimaryContact.started -= StartedPrimaryTouch;
+            playerInput.Touch.PrimaryContact.canceled -=EndedPrimaryTouch;
+            playerInput.MousePort.PrimaryContact.started -= StartedPrimaryTouchWithMouse;
+            playerInput.MousePort.PrimaryContact.canceled -= EndedPrimaryTouchWithMouse;
+            playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;
+        }
 
-    private void EndedPrimaryTouch(InputAction.CallbackContext context)
-    {
-        OnEndTouch?.Invoke( mainCamera.ScreenToWorldPoint(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+        private void StartedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
+            OnStartTouch?.Invoke(playerInput.MousePort.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
+        private void EndedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
+            OnEndTouch?.Invoke(playerInput.MousePort.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
+        private void StartedPrimaryTouch(InputAction.CallbackContext context)=>
+            OnStartTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.startTime);
+        private void EndedPrimaryTouch(InputAction.CallbackContext context) =>
+            OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
+        private void PressedKeyboardKey(InputAction.CallbackContext context) =>
+            OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
     }
 }
