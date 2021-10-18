@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Animations;
 using Interfaces;
+using TextMesh_Pro.Examples___Extras.Scripts;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour, 
@@ -115,14 +117,6 @@ public class PlayerCharacter : MonoBehaviour,
 
     public void HitWall()
     {
-        Debug.Log("hit wall");
-        if (!isGrounded)
-        {
-            rb.AddForce((-1 * transform.forward)/ 16, ForceMode.Impulse);
-            rb.Sleep();
-            rb.WakeUp();
-            OnHitWall?.Invoke();
-        }
         if (!m_Animator.GetBool(s_Attacking))
         {        
             rb.velocity /= 16;
@@ -130,10 +124,23 @@ public class PlayerCharacter : MonoBehaviour,
             rb.WakeUp();
             OnHitWall?.Invoke();
         }
-        else
-        {
-            Debug.Log("attacking");
-        }
-        
     }
+
+    private float tempoTravado = 0;
+    private float tempoMaximoTravado = 1.2f;
+    private void OnCollisionStay(Collision other)
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("Obstaculo"))
+        {
+            tempoTravado += Time.deltaTime;
+            if (tempoTravado >= tempoMaximoTravado)
+            {
+                rb.AddForce((-1 * transform.forward) / 16, ForceMode.Impulse);
+                rb.Sleep();
+                rb.WakeUp();
+                tempoTravado = 0;
+            }
+        }
+    }
+
 }

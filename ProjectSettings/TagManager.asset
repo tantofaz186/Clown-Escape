@@ -11,8 +11,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - "Obst\xE1culo"
-  - "Ch\xE3o"
+  - Obstaculo
+  - Chao
   - Power Up
   - Inimigo
   - 
