@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Animations;
 using Interfaces;
-using TextMesh_Pro.Examples___Extras.Scripts;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour, 
