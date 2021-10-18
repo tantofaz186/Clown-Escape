@@ -10,6 +10,7 @@ namespace Controllers
         [SerializeField] private GameObject MainMenuScreen;
         [SerializeField] private GameObject GameWinScreen;
         [SerializeField] private GameObject GameOverScreen;
+        [SerializeField] private GameObject TutorialScreen;
         
         private void OnEnable()
         {
@@ -54,6 +55,7 @@ namespace Controllers
             GameWinScreen.SetActive(false);
             GameOverScreen.SetActive(false);
             MainMenuScreen.SetActive(false);
+            TutorialScreen.SetActive(false);
         }
 
         public void GameWin()
@@ -71,11 +73,15 @@ namespace Controllers
 
         public void MainMenu()
         {
-            SceneManager.UnloadSceneAsync(1);
+            if(SceneManager.GetSceneByBuildIndex(1).isLoaded) SceneManager.UnloadSceneAsync(1);
             DisableAllScreens();
             MainMenuScreen.SetActive(true);
         }
-
+        public void TutorialMenu()
+        {
+            DisableAllScreens();
+            TutorialScreen.SetActive(true);
+        }
         private void SceneManagerOnsceneLoaded(Scene loadedScene, LoadSceneMode mode)
         {
             SceneManager.SetActiveScene(loadedScene);
