@@ -11,7 +11,7 @@ namespace Animations
     {
         private Animator m_Animator;
         private PlayerCharacter m_Player;
-        private SwipeDetection inputDetection;
+        private InputEventHandler inputDetection;
 
         private static readonly int s_Slide = Animator.StringToHash("Slide");
         private static readonly int s_Attack = Animator.StringToHash("Attack");
@@ -22,7 +22,7 @@ namespace Animations
         // Start is called before the first frame update
         private void Awake()
         {
-            inputDetection = SwipeDetection.Instance;
+            inputDetection = InputEventHandler.Instance;
             m_Animator = GetComponent<Animator>();
             m_Player = GetComponent<PlayerCharacter>();
         }
