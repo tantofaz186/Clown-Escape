@@ -12,6 +12,8 @@ namespace Controllers
         {
             if (audioSource == null)
                 audioSource = GetComponent<AudioSource>();
+            if(PlayerPrefs.HasKey("Volume"))
+                audioSource.volume = PlayerPrefs.GetFloat("Volume");
         }
     }
 }
