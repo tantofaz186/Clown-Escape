@@ -88,6 +88,7 @@ namespace Controllers
         public void SetVolume(Slider volumeSlider)
         {
             PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+            PlayerPrefs.Save();
         }
         
         private void WaitUntilLevelIsUnloaded(Scene unloadedScene)
