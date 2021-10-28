@@ -1089,6 +1089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524214638}
   - component: {fileID: 524214639}
+  - component: {fileID: 524214640}
   m_Layer: 5
   m_Name: Music Slider
   m_TagString: Untagged
@@ -1168,7 +1169,32 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 524214640}
+        m_TargetAssemblyTypeName: Controllers.SliderValueOnAwake, Assembly-CSharp
+        m_MethodName: OnSliderValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &524214640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524214637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97dde06e07eb377438498b24eb7c4ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefsKeyName: Volume
 --- !u!1 &537230782
 GameObject:
   m_ObjectHideFlags: 0
