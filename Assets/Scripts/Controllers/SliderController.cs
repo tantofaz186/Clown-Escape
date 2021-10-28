@@ -24,7 +24,7 @@ namespace Controllers
         }
         public void OnSliderValueChanged()
         {
-            PlayerPrefs.SetFloat("Volume", m_Slider.value);
+            PlayerPrefs.SetFloat(playerPrefsKeyName, m_Slider.value);
             PlayerPrefs.Save();
         }
     }
