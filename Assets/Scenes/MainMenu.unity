@@ -1326,7 +1326,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552411446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 749265534}
+        m_TargetAssemblyTypeName: Controllers.UIController, Assembly-CSharp
+        m_MethodName: SettingsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &552411446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,6 +1932,7 @@ MonoBehaviour:
   GameWinScreen: {fileID: 20410735}
   GameOverScreen: {fileID: 20410735}
   TutorialScreen: {fileID: 843330612367110526}
+  SettingsScreen: {fileID: 583505545}
 --- !u!114 &749265535
 MonoBehaviour:
   m_ObjectHideFlags: 0
