@@ -23,6 +23,7 @@ namespace Controllers
         {
             switch (key)
             {
+                case Key.Space:
                 case Key.W:
                     break;
                 case Key.S:
@@ -30,8 +31,6 @@ namespace Controllers
                 case Key.D:
                     break;
                 case Key.A:
-                    break;
-                case Key.Space:
                     break;
             }
         }
