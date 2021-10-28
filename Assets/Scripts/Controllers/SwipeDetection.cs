@@ -91,9 +91,5 @@ namespace Controllers
                 OnTap?.Invoke();
             }
         }
-        public void ForceSwipe(Action swipe)
-        {
-            swipe?.Invoke();
-        }
     }
 }
