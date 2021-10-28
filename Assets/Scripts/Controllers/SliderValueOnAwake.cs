@@ -9,6 +9,8 @@ namespace Controllers
         [SerializeField] private string playerPrefsKeyName;
         private void Awake()
         {
+            if(playerPrefsKeyName == null)
+                Debug.LogError($"Slider Key not set on object {gameObject.name}");
             try
             {
                 GetComponent<Slider>().value = PlayerPrefs.GetFloat(playerPrefsKeyName);
