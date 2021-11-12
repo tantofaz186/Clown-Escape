@@ -14,11 +14,12 @@ namespace Controllers
                 Debug.LogError($"Slider Key not set on object {gameObject.name}");
             try
             {
-                m_Slider.value = PlayerPrefs.GetFloat(playerPrefsKeyName);
+                m_Slider.value = PlayerPrefs.HasKey(playerPrefsKeyName)? PlayerPrefs.GetFloat(playerPrefsKeyName): 1;
             }
             catch
             {
                 Debug.LogWarning($"<color=red>Key {playerPrefsKeyName} not found in PlayerPrefs</color>");
+                m_Slider.value = 1;
             }
         }
         public void OnSliderValueChanged()
