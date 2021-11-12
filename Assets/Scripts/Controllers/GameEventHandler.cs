@@ -6,8 +6,10 @@ namespace Controllers
     {
         [SerializeField]private FinishLine LevelFinishLine;
         private UIController m_UIController;
+        private ScoreTracker scoreTracker;
         private void Awake()
         {
+            scoreTracker = ScoreTracker.Instance;
             m_UIController = UIController.Instance;
         }
 
@@ -30,10 +32,14 @@ namespace Controllers
         private void GameOver()
         {
             m_UIController.GameOver();
+            scoreTracker.Restart();
+            scoreTracker.DisplayScore();
         }
         private void GameWin()
         {
             m_UIController.GameWin();
+            scoreTracker.SaveScore();
+            scoreTracker.DisplayScore();
         }
     }
 }
