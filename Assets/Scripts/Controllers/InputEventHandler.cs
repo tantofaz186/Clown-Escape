@@ -57,57 +57,68 @@ namespace Controllers
         {
             endPos = pos;
             endTime = time;
-            DetectSwipeType();
+            var actionType = DetectActionType();
+            actionType?.Invoke();
         }
 
 
-        private void DetectSwipeType()
+        private Action DetectActionType()
         {
+
+            Action actionType = null;
             if (isSwipe)
             {
                 Debug.DrawLine(startPos, endPos, Color.red, 6f, false);
                 var vectorDir = (endPos - startPos).normalized;
                 if (Vector2.Angle(vectorDir, Vector2.up) <= angleThreshold)
                 {
-                    OnSwipeUp?.Invoke();
+                    //OnSwipeUp?.Invoke();
+                    actionType = OnSwipeUp;
                 }
                 else if (Vector2.Angle(vectorDir, Vector2.down) <= angleThreshold)
                 {
-                    OnSwipeDown?.Invoke();
+                    //OnSwipeDown?.Invoke();
+                    actionType = OnSwipeDown;
                 }
                 else if (Vector2.Angle(vectorDir, Vector2.left) <= angleThreshold)
                 {
-                    OnSwipeLeft?.Invoke();
+                    //OnSwipeLeft?.Invoke();
+                    actionType = OnSwipeLeft;
                 }
                 else if (Vector2.Angle(vectorDir, Vector2.right) <= angleThreshold)
                 {
-                    OnSwipeRight?.Invoke();
+                    //OnSwipeRight?.Invoke();
+                    actionType = OnSwipeRight;
                 }
             }
             else if (isTap)
             {
-                OnTap?.Invoke();
+                actionType = OnTap;
             }
+
+            return actionType;
         }
         private void KeyPressHandler(Key key)
         {
+            Action keyboardAction = null;
             switch (key)
             {
                 case Key.Space:
                 case Key.W:
-                    OnSwipeUp?.Invoke();
+                    keyboardAction = OnSwipeUp;
                     break;
                 case Key.S:
-                    OnSwipeDown?.Invoke();
+                    keyboardAction = OnSwipeDown;
                     break;
                 case Key.A:
-                    OnSwipeLeft?.Invoke();
+                    keyboardAction = OnSwipeLeft;
                     break;
                 case Key.D:
-                    OnSwipeRight?.Invoke();
+                    keyboardAction = OnSwipeRight;
                     break;
 
             }
+            keyboardAction?.Invoke();
         }
     }
 }
