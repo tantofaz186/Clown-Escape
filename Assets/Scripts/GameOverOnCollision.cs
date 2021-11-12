@@ -21,10 +21,10 @@ public class GameOverOnCollision : MonoBehaviour
         {
             CollidedWithCharacter?.Invoke();
         }
-        else if (other.TryGetComponent(out PlayerCharacter _))
-        {
-            CollidedWithCharacter?.Invoke();
-        }
+        //else if (other.TryGetComponent(out PlayerCharacter _))
+        //{
+        //    CollidedWithCharacter?.Invoke();
+        //}
 
     }
 }
