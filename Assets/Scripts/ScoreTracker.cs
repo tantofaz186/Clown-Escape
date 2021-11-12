@@ -1,13 +1,17 @@
+using System;
+using Controllers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScoreTracker : MonoBehaviour
+public class ScoreTracker : Singleton<ScoreTracker>
 {
     private float bestScore;
     private float score;
-
-    string playerPrefsKey => $"{SceneManager.GetActiveScene().name}_score";
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TextMeshProUGUI bestScoreText;
     
+    string playerPrefsKey => $"{SceneManager.GetActiveScene().name}_score";
     
     private void Awake()
     {
@@ -18,31 +22,30 @@ public class ScoreTracker : MonoBehaviour
         }
         bestScore = PlayerPrefs.GetFloat(scoreKey);
     }
-
-    // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        Restart();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         score += Time.deltaTime;
     }
-
-    private void OnEnable()
+    
+    public void Restart()
     {
-        GameOverOnCollision.CollidedWithCharacter += StopScoreCount;
+        score = 0;
     }
-
-    private void OnDisable()
+    
+    public void SaveScore()
     {
-        GameOverOnCollision.CollidedWithCharacter -= StopScoreCount;
+        PlayerPrefs.SetFloat(playerPrefsKey, Mathf.Min(score, bestScore));
     }
-
-    void StopScoreCount()
+    public void DisplayScore()
     {
-        
+        var bestTime = TimeSpan.FromSeconds(bestScore);
+        var currentTime = TimeSpan.FromSeconds(score);
+        bestScoreText.text = bestTime.ToString(@"mm\:ss\:fff");
+        currentScoreText.text = currentTime.ToString(@"mm\:ss\:fff");;
     }
 }
