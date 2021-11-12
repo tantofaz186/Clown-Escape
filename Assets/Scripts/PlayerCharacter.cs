@@ -8,7 +8,7 @@ public class PlayerCharacter : MonoBehaviour,
 {
 
     private Animator m_Animator;
-    private static readonly int s_Attacking = Animator.StringToHash("Attacking");
+    private static readonly int s_Attacking = Animator.StringToHash("Attack");
     public event Action OnHitWall;
     [SerializeField] private float jumpForce = 9.5f;
     [SerializeField] private float acceleration = 11;
