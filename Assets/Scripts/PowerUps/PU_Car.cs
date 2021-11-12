@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace PowerUps
 {
     //invencibilidade e destruição de obstáculos

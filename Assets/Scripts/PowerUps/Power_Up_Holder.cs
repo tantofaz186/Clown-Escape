@@ -1,5 +1,3 @@
-using System;
-using Interfaces;
 using UnityEngine;
 
 namespace PowerUps
