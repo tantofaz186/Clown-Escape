@@ -47,12 +47,13 @@ namespace Controllers
 
         public void GameWin()
         {
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             DisableAllScreens();
             GameWinScreen.SetActive(true);
         }
         public void GameOver()
         {
-            SceneManager.UnloadSceneAsync(1);
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             DisableAllScreens();
             GameOverScreen.SetActive(true);
         }
