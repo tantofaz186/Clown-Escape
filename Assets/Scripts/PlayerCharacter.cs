@@ -122,8 +122,23 @@ public class PlayerCharacter : MonoBehaviour,
         }
     }
 
+    public void AddInvincibility(float time)
+    {
+        StartCoroutine(AddInvincibilityCourotine(time));
+    }
+
+    IEnumerator AddInvincibilityCourotine(float time)
+    {
+        //TODO
+        //for the duration
+            //spawn particles on player 
+            //makes player able to break walls
+            //makes player invincible
+        throw new NotImplementedException();
+    }
+    
     private float tempoTravado = 0;
-    private float tempoMaximoTravado = 1.2f;
+    private float tempoMaximoTravado = 0.7f;
     private void OnCollisionStay(Collision other)
     {
         if (gameObject.layer == LayerMask.NameToLayer("Obstaculo"))
