@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Controllers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cheats : MonoBehaviour
 {
@@ -26,13 +27,16 @@ public class Cheats : MonoBehaviour
         inputDetection.OnSwipeRight += CaptureSwipeRight;
         inputDetection.OnSwipeDown += CaptureSwipeDown;
         inputDetection.OnSwipeLeft += CaptureSwipeLeft;
+        SceneManager.sceneUnloaded += SceneManagerOnsceneUnloaded;
     }
+
     private void OnDisable()
     {
         inputDetection.OnSwipeUp -= CaptureSwipeUp;
         inputDetection.OnSwipeRight -= CaptureSwipeRight;
         inputDetection.OnSwipeDown -= CaptureSwipeDown;
         inputDetection.OnSwipeLeft -= CaptureSwipeLeft;
+        SceneManager.sceneUnloaded -= SceneManagerOnsceneUnloaded;
     }
 
     private void CaptureSwipeUp() => SetCheatProgress(Inputs.UP);
@@ -81,7 +85,15 @@ public class Cheats : MonoBehaviour
         }
     }
 
-    //TODO
+    private void SceneManagerOnsceneUnloaded(Scene arg0)
+    {
+        ResetCheats();
+    }
+
+    private void ResetCheats()
+    {
+        GameOverOnCollision.playerIsInvincible = false;
+    }
     private void StartAtLevelTwo()
     {
         Debug.Log("Start At Level 2");
@@ -91,6 +103,7 @@ public class Cheats : MonoBehaviour
     private void Invincibility()
     {
         Debug.Log("Invincibility");
+        GameOverOnCollision.playerIsInvincible = true;
     }
 }
 
