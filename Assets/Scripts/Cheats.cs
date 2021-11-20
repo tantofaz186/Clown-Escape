@@ -5,10 +5,12 @@ using UnityEngine;
 public class Cheats : MonoBehaviour
 {
     private InputEventHandler inputDetection;
+    private UIController uiController;
     private List<List<Inputs>> cheatList;
-    private int[] cheatProgress;
+    [SerializeField]private int[] cheatProgress;
     private void Awake()
     {
+        uiController = UIController.Instance;
         cheatList = new List<List<Inputs>>()
         {
             InputCheatList.Invincibility,
@@ -43,6 +45,7 @@ public class Cheats : MonoBehaviour
 
     private void SetCheatProgress(Inputs input)
     {
+        Debug.Log($"Cheat progress input: {input} ");
         for (int i = 0; i < cheatList.Count; i++)
         {
             if (input != cheatList[i][cheatProgress[i]])
@@ -55,6 +58,7 @@ public class Cheats : MonoBehaviour
                 if (cheatProgress[i] == cheatList[i].Count)
                 {
                     InvokeCheat(i);
+                    cheatProgress[i] = 0;
                 }
             }
             
@@ -80,12 +84,13 @@ public class Cheats : MonoBehaviour
     //TODO
     private void StartAtLevelTwo()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Start At Level 2");
+        uiController.StartGame(2);
     }
 
     private void Invincibility()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Invincibility");
     }
 }
 

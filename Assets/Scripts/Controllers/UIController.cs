@@ -27,17 +27,17 @@ namespace Controllers
             SceneManager.sceneUnloaded -= SceneManagerOnsceneUnloaded;
         }
         
-        public void StartGame()
+        public void StartGame(int sceneIndex = 1)
         {
             DisableAllScreens();
-            if (SceneManager.GetSceneByBuildIndex(1).isLoaded)
+            if (SceneManager.GetSceneByBuildIndex(sceneIndex).isLoaded)
             {
                 SceneManager.sceneUnloaded += WaitUntilLevelIsUnloaded;
-                SceneManager.UnloadSceneAsync(1);
+                SceneManager.UnloadSceneAsync(sceneIndex);
             }
             else
             {
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+                SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
             }
         }
         public void QuitGame()
