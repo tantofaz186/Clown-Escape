@@ -19,7 +19,6 @@ public class MovingPlatform : MonoBehaviour
         sin += Time.deltaTime % (2 * Mathf.PI);//goes from 0 to 2*PI
 
         transform.position = startPos + endPos * ((Mathf.Sin(sin * period) + 1) / 2);
-        
     }
 
     private void OnDrawGizmosSelected()

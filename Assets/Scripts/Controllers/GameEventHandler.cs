@@ -1,26 +1,40 @@
 using System;
 using UnityEngine;
 
-public class GameEventHandler : MonoBehaviour
+namespace Controllers
 {
-    #region Event Subscription
-
-    private void OnEnable()
+    public class GameEventHandler : Singleton<GameEventHandler>
     {
-        Enemy.CollidedWithCharacter += GameOver;
+        [SerializeField]private FinishLine LevelFinishLine;
+        private UIController m_UIController;
+        private void Awake()
+        {
+            m_UIController = UIController.Instance;
+        }
 
-    }
+        #region Event Subscription
 
-    private void OnDisable()
-    {
-        Enemy.CollidedWithCharacter -= GameOver;
+        private void OnEnable()
+        {
+            GameOverOnCollision.CollidedWithCharacter += GameOver;
+            LevelFinishLine.OnFinish += GameWin;
+        }
 
-    }
+        private void OnDisable()
+        {
+            GameOverOnCollision.CollidedWithCharacter -= GameOver;
+            LevelFinishLine.OnFinish -= GameWin;
+        }
 
-    #endregion
+        #endregion
 
-    private void GameOver()
-    {
-        throw new NotImplementedException();
+        private void GameOver()
+        {
+            m_UIController.GameOver();
+        }
+        private void GameWin()
+        {
+            m_UIController.GameWin();
+        }
     }
 }

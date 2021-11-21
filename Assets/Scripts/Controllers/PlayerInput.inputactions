@@ -3,12 +3,12 @@
     "maps": [
         {
             "name": "Touch",
-            "id": "07e14a32-bc38-4956-bc66-25adcbe0ee4d",
+            "id": "e15df24d-66e5-409e-bacc-ca467c4ddc56",
             "actions": [
                 {
                     "name": "Primary Contact",
                     "type": "PassThrough",
-                    "id": "3ed02aff-45bc-45f6-a269-efafc1d86ed3",
+                    "id": "b784c2ff-a683-43ed-b151-8e119d1b6dd7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -16,7 +16,7 @@
                 {
                     "name": "Primary Position",
                     "type": "PassThrough",
-                    "id": "bd811f88-266a-4431-b657-c7cc53ee6f9e",
+                    "id": "074082bc-89b3-4ced-9b95-2087b8586bf8",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -25,7 +25,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a21a5748-8843-45d6-af6b-e44a546997d6",
+                    "id": "f6014e44-5c14-4c84-a311-a63f7408afaf",
                     "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "Press",
                     "processors": "",
@@ -36,12 +36,129 @@
                 },
                 {
                     "name": "",
-                    "id": "7fb09d70-94c2-48d8-a7c8-8ce7e8011b0f",
+                    "id": "b277fe72-06b9-46f6-b11a-3f683e83329f",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Primary Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MousePort",
+            "id": "99a6a163-7ae0-4964-815c-903911ad9861",
+            "actions": [
+                {
+                    "name": "Primary Contact",
+                    "type": "PassThrough",
+                    "id": "ca1b4bf6-0de3-43ec-af6a-72df860c69dd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Primary Position",
+                    "type": "PassThrough",
+                    "id": "729b7acf-8949-4d07-b85e-78e72f9e519e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "079f815f-d3d8-4897-8eeb-8c2784410dbe",
+                    "path": "<Mouse>/press",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Contact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "353fea26-e379-4c81-afb6-b599718e72fb",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Teclado Port",
+            "id": "0f47e923-87ce-4d0b-8781-0a9729013ccf",
+            "actions": [
+                {
+                    "name": "Teclas",
+                    "type": "PassThrough",
+                    "id": "69a3e163-4328-4da1-94b7-64a7960eea13",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29ae9799-6690-476a-8c79-acd1fd8a6173",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teclas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ab7bba5-cc17-4867-8dfb-7d79a7eb3377",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teclas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "874157da-07a2-48f6-81b4-e208eb8559d6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teclas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f316204f-e02a-4638-8f76-562bda11fb14",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teclas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15eda61c-2376-444a-896d-1fe89c7f64f4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teclas",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
