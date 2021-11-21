@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2803978609245348231}
   - component: {fileID: 8532778553267971034}
   - component: {fileID: 4425671380694689160}
+  - component: {fileID: 288699025806573745}
   m_Layer: 6
   m_Name: Barril
   m_TagString: Untagged
@@ -126,3 +127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakSound: {fileID: 8300000, guid: c9ece9c44db657445adff3c8b3f592b0, type: 3}
+--- !u!114 &288699025806573745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629902704806295200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b1dc2ad01adb344be6ebc183b8f021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
