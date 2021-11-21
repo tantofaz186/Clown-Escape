@@ -11,7 +11,7 @@ public class ScoreTracker : Singleton<ScoreTracker>
     [SerializeField] private TextMeshProUGUI currentScoreText;
     [SerializeField] private TextMeshProUGUI bestScoreText;
     
-    string playerPrefsKey = $"{SceneManager.GetActiveScene().name}_score";
+    string playerPrefsKey;
     
     private void Awake()
     {
