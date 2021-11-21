@@ -11,7 +11,7 @@ namespace Controllers
         [SerializeField] private GameObject GameOverScreen;
         [SerializeField] private GameObject TutorialScreen;
         [SerializeField] private GameObject SettingsScreen;
-
+        private int lastLoadedSceneIndex;
         private void Awake()
         {
             audioManager = AudioManager.Instance;
@@ -29,8 +29,13 @@ namespace Controllers
         
         public void StartGame(int sceneIndex = 1)
         {
+
             DisableAllScreens();
-            if (SceneManager.GetSceneByBuildIndex(sceneIndex).isLoaded)
+            if (sceneIndex == 0)
+            {
+                SceneManager.LoadSceneAsync(lastLoadedSceneIndex, LoadSceneMode.Additive);
+            }
+            else if (SceneManager.GetSceneByBuildIndex(sceneIndex).isLoaded)
             {
                 SceneManager.sceneUnloaded += WaitUntilLevelIsUnloaded;
                 SceneManager.UnloadSceneAsync(sceneIndex);
@@ -94,7 +99,7 @@ namespace Controllers
         }
         private void SceneManagerOnsceneUnloaded(Scene unloadedScene)
         {
-            
+            lastLoadedSceneIndex = unloadedScene.buildIndex;
         }
     }
 }
