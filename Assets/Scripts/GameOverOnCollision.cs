@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameOverOnCollision : MonoBehaviour
@@ -9,8 +7,17 @@ public class GameOverOnCollision : MonoBehaviour
     protected static Collider playerCollider;
     public static event Action CollidedWithCharacter;
 
+    public static bool playerIsInvincible = false;
+
+    private void DestroyComponentIfPlayerInvincible()
+    {
+        if (playerIsInvincible)
+            Destroy(this);
+    }
+
     protected void Awake()
     {
+        DestroyComponentIfPlayerInvincible();
         if (player == null)
         {
             player = FindObjectOfType<PlayerCharacter>();
@@ -23,10 +30,10 @@ public class GameOverOnCollision : MonoBehaviour
         {
             CollidedWithCharacter?.Invoke();
         }
-        else if (other.TryGetComponent(out PlayerCharacter _))
-        {
-            CollidedWithCharacter?.Invoke();
-        }
+        //else if (other.TryGetComponent(out PlayerCharacter _))
+        //{
+        //    CollidedWithCharacter?.Invoke();
+        //}
 
     }
 }

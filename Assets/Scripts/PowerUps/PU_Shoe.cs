@@ -15,7 +15,7 @@ namespace PowerUps
             var go = Instantiate(pickUpParticles, transform1.position, Quaternion.identity);
             go.transform.Rotate(new Vector3(0,90,0), Space.Self);
             player.ChangeMaxSpeed(speedChange, effectTime);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
