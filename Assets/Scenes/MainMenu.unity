@@ -423,7 +423,7 @@ MonoBehaviour:
       - m_Target: {fileID: 749265534}
         m_TargetAssemblyTypeName: Controllers.UIController, Assembly-CSharp
         m_MethodName: StartGame
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
