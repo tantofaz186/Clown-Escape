@@ -42,7 +42,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Touch"",
                     ""action"": ""Primary Contact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -53,53 +53,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Primary Position"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""MousePort"",
-            ""id"": ""99a6a163-7ae0-4964-815c-903911ad9861"",
-            ""actions"": [
-                {
-                    ""name"": ""Primary Contact"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""ca1b4bf6-0de3-43ec-af6a-72df860c69dd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Primary Position"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""729b7acf-8949-4d07-b85e-78e72f9e519e"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""079f815f-d3d8-4897-8eeb-8c2784410dbe"",
-                    ""path"": ""<Mouse>/press"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Primary Contact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""353fea26-e379-4c81-afb6-b599718e72fb"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Touch"",
                     ""action"": ""Primary Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -176,21 +130,90 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MousePort"",
+            ""id"": ""16dccea9-5365-4a7c-b51e-32fe02ae87b7"",
+            ""actions"": [
+                {
+                    ""name"": ""Primary Contact"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fb40dc53-d57a-4afb-b263-bb1292ad9966"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Primary Position"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7c0c1081-e4fc-4cb6-801c-f9761861e040"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bf397cbd-1b6e-494a-9af5-1a5ac1dee770"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Primary Contact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d8c09bf-2d39-4440-b1ea-e9ccbdefef6e"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Primary Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Mouse"",
+            ""bindingGroup"": ""Mouse"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Touch"",
+            ""bindingGroup"": ""Touch"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Touch
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
         m_Touch_PrimaryContact = m_Touch.FindAction("Primary Contact", throwIfNotFound: true);
         m_Touch_PrimaryPosition = m_Touch.FindAction("Primary Position", throwIfNotFound: true);
+        // Teclado Port
+        m_TecladoPort = asset.FindActionMap("Teclado Port", throwIfNotFound: true);
+        m_TecladoPort_Teclas = m_TecladoPort.FindAction("Teclas", throwIfNotFound: true);
         // MousePort
         m_MousePort = asset.FindActionMap("MousePort", throwIfNotFound: true);
         m_MousePort_PrimaryContact = m_MousePort.FindAction("Primary Contact", throwIfNotFound: true);
         m_MousePort_PrimaryPosition = m_MousePort.FindAction("Primary Position", throwIfNotFound: true);
-        // Teclado Port
-        m_TecladoPort = asset.FindActionMap("Teclado Port", throwIfNotFound: true);
-        m_TecladoPort_Teclas = m_TecladoPort.FindAction("Teclas", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -278,6 +301,39 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     }
     public TouchActions @Touch => new TouchActions(this);
 
+    // Teclado Port
+    private readonly InputActionMap m_TecladoPort;
+    private ITecladoPortActions m_TecladoPortActionsCallbackInterface;
+    private readonly InputAction m_TecladoPort_Teclas;
+    public struct TecladoPortActions
+    {
+        private @PlayerInput m_Wrapper;
+        public TecladoPortActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Teclas => m_Wrapper.m_TecladoPort_Teclas;
+        public InputActionMap Get() { return m_Wrapper.m_TecladoPort; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TecladoPortActions set) { return set.Get(); }
+        public void SetCallbacks(ITecladoPortActions instance)
+        {
+            if (m_Wrapper.m_TecladoPortActionsCallbackInterface != null)
+            {
+                @Teclas.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+                @Teclas.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+                @Teclas.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+            }
+            m_Wrapper.m_TecladoPortActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Teclas.started += instance.OnTeclas;
+                @Teclas.performed += instance.OnTeclas;
+                @Teclas.canceled += instance.OnTeclas;
+            }
+        }
+    }
+    public TecladoPortActions @TecladoPort => new TecladoPortActions(this);
+
     // MousePort
     private readonly InputActionMap m_MousePort;
     private IMousePortActions m_MousePortActionsCallbackInterface;
@@ -318,45 +374,25 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public MousePortActions @MousePort => new MousePortActions(this);
-
-    // Teclado Port
-    private readonly InputActionMap m_TecladoPort;
-    private ITecladoPortActions m_TecladoPortActionsCallbackInterface;
-    private readonly InputAction m_TecladoPort_Teclas;
-    public struct TecladoPortActions
+    private int m_MouseSchemeIndex = -1;
+    public InputControlScheme MouseScheme
     {
-        private @PlayerInput m_Wrapper;
-        public TecladoPortActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Teclas => m_Wrapper.m_TecladoPort_Teclas;
-        public InputActionMap Get() { return m_Wrapper.m_TecladoPort; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TecladoPortActions set) { return set.Get(); }
-        public void SetCallbacks(ITecladoPortActions instance)
+        get
         {
-            if (m_Wrapper.m_TecladoPortActionsCallbackInterface != null)
-            {
-                @Teclas.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
-                @Teclas.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
-                @Teclas.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
-            }
-            m_Wrapper.m_TecladoPortActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Teclas.started += instance.OnTeclas;
-                @Teclas.performed += instance.OnTeclas;
-                @Teclas.canceled += instance.OnTeclas;
-            }
+            if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
+            return asset.controlSchemes[m_MouseSchemeIndex];
         }
     }
-    public TecladoPortActions @TecladoPort => new TecladoPortActions(this);
-    public interface ITouchActions
+    private int m_TouchSchemeIndex = -1;
+    public InputControlScheme TouchScheme
     {
-        void OnPrimaryContact(InputAction.CallbackContext context);
-        void OnPrimaryPosition(InputAction.CallbackContext context);
+        get
+        {
+            if (m_TouchSchemeIndex == -1) m_TouchSchemeIndex = asset.FindControlSchemeIndex("Touch");
+            return asset.controlSchemes[m_TouchSchemeIndex];
+        }
     }
-    public interface IMousePortActions
+    public interface ITouchActions
     {
         void OnPrimaryContact(InputAction.CallbackContext context);
         void OnPrimaryPosition(InputAction.CallbackContext context);
@@ -364,5 +400,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface ITecladoPortActions
     {
         void OnTeclas(InputAction.CallbackContext context);
+    }
+    public interface IMousePortActions
+    {
+        void OnPrimaryContact(InputAction.CallbackContext context);
+        void OnPrimaryPosition(InputAction.CallbackContext context);
     }
 }

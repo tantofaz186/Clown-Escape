@@ -7,8 +7,17 @@ public class GameOverOnCollision : MonoBehaviour
     protected static Collider playerCollider;
     public static event Action CollidedWithCharacter;
 
+    public static bool playerIsInvincible = false;
+
+    private void DestroyComponentIfPlayerInvincible()
+    {
+        if (playerIsInvincible)
+            Destroy(this);
+    }
+
     protected void Awake()
     {
+        DestroyComponentIfPlayerInvincible();
         if (player == null)
         {
             player = FindObjectOfType<PlayerCharacter>();
