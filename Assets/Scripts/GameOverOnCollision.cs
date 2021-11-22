@@ -36,4 +36,16 @@ public class GameOverOnCollision : MonoBehaviour
         //}
 
     }
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider == playerCollider)
+        {
+            CollidedWithCharacter?.Invoke();
+        }
+        //else if (other.TryGetComponent(out PlayerCharacter _))
+        //{
+        //    CollidedWithCharacter?.Invoke();
+        //}
+
+    }
 }
