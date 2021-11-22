@@ -8,7 +8,7 @@ public class Trampoline : MonoBehaviour
     private Collider mainCharacterCollider;
     private void Start()
     {
-        mainCharacterCollider = GameObject.Find("player").GetComponent<Collider>();
+        mainCharacterCollider = GameObject.Find("palhaço").GetComponent<Collider>();
     }
     private void OnCollisionEnter(Collision collision)
     {

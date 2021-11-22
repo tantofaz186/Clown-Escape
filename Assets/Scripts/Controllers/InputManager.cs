@@ -41,7 +41,7 @@ namespace Controllers
         {
             playerInput.Disable();
             playerInput.Touch.PrimaryContact.started -= StartedPrimaryTouch;
-            playerInput.Touch.PrimaryContact.canceled -=EndedPrimaryTouch;
+            playerInput.Touch.PrimaryContact.canceled -= EndedPrimaryTouch;
             playerInput.MousePort.PrimaryContact.started -= StartedPrimaryTouchWithMouse;
             playerInput.MousePort.PrimaryContact.canceled -= EndedPrimaryTouchWithMouse;
             playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;

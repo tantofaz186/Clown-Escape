@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Controllers;
 using Interfaces;
 using UnityEngine;
@@ -17,7 +14,7 @@ public class BreakOnCollision : MonoBehaviour,IBreakable
 
     private void OnCollisionEnter(Collision other)
     {
-        other.gameObject.GetComponent<PlayerCharacter>().HitWall();
+        other.gameObject.GetComponent<PlayerCharacter>()?.HitWall();
         Break();
     }
 
