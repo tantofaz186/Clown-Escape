@@ -141,12 +141,12 @@ public class PlayerCharacter : MonoBehaviour,
     private float tempoMaximoTravado = 0.7f;
     private void OnCollisionStay(Collision other)
     {
-        if (gameObject.layer == LayerMask.NameToLayer("Obstaculo"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstaculo"))
         {
             tempoTravado += Time.deltaTime;
             if (tempoTravado >= tempoMaximoTravado)
             {
-                rb.AddForce((-1 * transform.forward) / 16, ForceMode.Impulse);
+                rb.AddForce((-1 * transform.forward) / 2, ForceMode.Impulse);
                 rb.Sleep();
                 rb.WakeUp();
                 tempoTravado = 0;
