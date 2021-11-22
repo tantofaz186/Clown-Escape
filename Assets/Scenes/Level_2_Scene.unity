@@ -147,6 +147,12 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3428768131595223567, guid: 598376d0de549d845a09323cda63511a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 4361479debff63348b680e8f4cdc759b,
+        type: 2}
     - target: {fileID: 4699759581357996255, guid: 598376d0de549d845a09323cda63511a,
         type: 3}
       propertyPath: m_RootOrder
@@ -222,6 +228,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: "palha\xE7o"
       objectReference: {fileID: 0}
+    - target: {fileID: 6656024358587444823, guid: 598376d0de549d845a09323cda63511a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 4361479debff63348b680e8f4cdc759b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 598376d0de549d845a09323cda63511a, type: 3}
 --- !u!1 &705507993
@@ -491,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788991bc9e421b44581203e0ad94046c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.2
+  speed: 1.95
 --- !u!54 &876286063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1193,6 +1205,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3634363425311454250, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3635925584455939930, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
         type: 3}
       propertyPath: m_Layer
@@ -1253,6 +1270,26 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4631517561502146836, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: speedChange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631517561502146837, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873127628198431904, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: speedChange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873127628198431905, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4964928307484917398, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
         type: 3}
       propertyPath: m_Layer
@@ -1292,6 +1329,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388337534393529868, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388337534393529869, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
+        type: 3}
+      propertyPath: speedChange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8389863097888183818, guid: 9bb44cc065cd2e449b0e2bccb44fccf1,
         type: 3}
