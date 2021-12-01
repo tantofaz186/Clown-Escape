@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2466466191963652720}
   - component: {fileID: 7121067770669362037}
   m_Layer: 6
-  m_Name: obstaduloRing
+  m_Name: obstaculoRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
