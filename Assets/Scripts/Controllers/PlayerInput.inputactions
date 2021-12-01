@@ -20,6 +20,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Five Contacts",
+                    "type": "PassThrough",
+                    "id": "e5ed2186-fb97-421b-937a-6b094e85d9e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -42,6 +50,17 @@
                     "processors": "",
                     "groups": "Touch",
                     "action": "Primary Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58ada81a-8d60-4ace-b55c-e88bbdaff3b0",
+                    "path": "<Touchscreen>/touch4/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Five Contacts",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

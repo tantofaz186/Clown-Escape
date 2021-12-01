@@ -33,6 +33,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Five Contacts"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e5ed2186-fb97-421b-937a-6b094e85d9e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -55,6 +63,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Touch"",
                     ""action"": ""Primary Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58ada81a-8d60-4ace-b55c-e88bbdaff3b0"",
+                    ""path"": ""<Touchscreen>/touch4/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Five Contacts"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -207,6 +226,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
         m_Touch_PrimaryContact = m_Touch.FindAction("Primary Contact", throwIfNotFound: true);
         m_Touch_PrimaryPosition = m_Touch.FindAction("Primary Position", throwIfNotFound: true);
+        m_Touch_FiveContacts = m_Touch.FindAction("Five Contacts", throwIfNotFound: true);
         // Teclado Port
         m_TecladoPort = asset.FindActionMap("Teclado Port", throwIfNotFound: true);
         m_TecladoPort_Teclas = m_TecladoPort.FindAction("Teclas", throwIfNotFound: true);
@@ -265,12 +285,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private ITouchActions m_TouchActionsCallbackInterface;
     private readonly InputAction m_Touch_PrimaryContact;
     private readonly InputAction m_Touch_PrimaryPosition;
+    private readonly InputAction m_Touch_FiveContacts;
     public struct TouchActions
     {
         private @PlayerInput m_Wrapper;
         public TouchActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @PrimaryContact => m_Wrapper.m_Touch_PrimaryContact;
         public InputAction @PrimaryPosition => m_Wrapper.m_Touch_PrimaryPosition;
+        public InputAction @FiveContacts => m_Wrapper.m_Touch_FiveContacts;
         public InputActionMap Get() { return m_Wrapper.m_Touch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,6 +308,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @PrimaryPosition.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryPosition;
                 @PrimaryPosition.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryPosition;
                 @PrimaryPosition.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnPrimaryPosition;
+                @FiveContacts.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnFiveContacts;
+                @FiveContacts.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnFiveContacts;
+                @FiveContacts.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnFiveContacts;
             }
             m_Wrapper.m_TouchActionsCallbackInterface = instance;
             if (instance != null)
@@ -296,6 +321,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @PrimaryPosition.started += instance.OnPrimaryPosition;
                 @PrimaryPosition.performed += instance.OnPrimaryPosition;
                 @PrimaryPosition.canceled += instance.OnPrimaryPosition;
+                @FiveContacts.started += instance.OnFiveContacts;
+                @FiveContacts.performed += instance.OnFiveContacts;
+                @FiveContacts.canceled += instance.OnFiveContacts;
             }
         }
     }
@@ -396,6 +424,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     {
         void OnPrimaryContact(InputAction.CallbackContext context);
         void OnPrimaryPosition(InputAction.CallbackContext context);
+        void OnFiveContacts(InputAction.CallbackContext context);
     }
     public interface ITecladoPortActions
     {
