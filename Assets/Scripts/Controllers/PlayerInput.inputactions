@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Four Contacts",
+                    "type": "Button",
+                    "id": "41c1964c-0748-4ac7-99a1-eb357ebfa7e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Five Contacts",
                     "type": "PassThrough",
                     "id": "e5ed2186-fb97-421b-937a-6b094e85d9e3",
@@ -59,8 +67,19 @@
                     "path": "<Touchscreen>/touch4/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Touch",
                     "action": "Five Contacts",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f77f2daa-1649-4c74-9da7-2ef6feef5844",
+                    "path": "<Touchscreen>/touch3/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Four Contacts",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

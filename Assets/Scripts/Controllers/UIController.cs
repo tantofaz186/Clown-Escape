@@ -11,6 +11,7 @@ namespace Controllers
         [SerializeField] private GameObject GameOverScreen;
         [SerializeField] private GameObject TutorialScreen;
         [SerializeField] private GameObject SettingsScreen;
+        [SerializeField] private GameObject LevelSelectScreen;
         private int lastLoadedSceneIndex;
         private void Awake()
         {
@@ -70,6 +71,7 @@ namespace Controllers
             MainMenuScreen.SetActive(false);
             TutorialScreen.SetActive(false);
             SettingsScreen.SetActive(false);
+            LevelSelectScreen.SetActive(false);
         }
         public void MainMenu()
         {
@@ -87,7 +89,11 @@ namespace Controllers
             DisableAllScreens();
             SettingsScreen.SetActive(true);
         }
-
+        public void LevelSelect()
+        {
+            DisableAllScreens();
+            LevelSelectScreen.SetActive(true);
+        }
         private void WaitUntilLevelIsUnloaded(Scene unloadedScene)
         {
             SceneManager.sceneUnloaded -= WaitUntilLevelIsUnloaded;
