@@ -21,13 +21,11 @@ public class Cheats : MonoBehaviour
     {
         inputManager.FourTouch += UnlockLevelSelectScreen;
         inputManager.FiveTouch += Invincibility;
-        inputManager.OnKeyPress += KeyboardCheatsHandler;
     }
     private void OnDisable()
     {
         inputManager.FourTouch -= UnlockLevelSelectScreen;
         inputManager.FiveTouch -= Invincibility;
-        inputManager.OnKeyPress -= KeyboardCheatsHandler;
     }
     
     private void Invincibility()
@@ -42,20 +40,7 @@ public class Cheats : MonoBehaviour
         CheatTrigger();
         uiController.LevelSelect();
     }
-    
-    private void KeyboardCheatsHandler(Key key)
-    {
-        switch (key)
-        {
-            case Key.H:
-                Invincibility();
-                break;
-            case Key.P:
-                UnlockLevelSelectScreen();
-                break;
-        }
-    }
-    
+
     private void CheatTrigger()
     {
         audioSource.PlayOneShot(CheatTriggerAudioClip);

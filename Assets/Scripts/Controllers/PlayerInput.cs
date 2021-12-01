@@ -36,7 +36,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Four Contacts"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""41c1964c-0748-4ac7-99a1-eb357ebfa7e1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -109,6 +109,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Key"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Invincibility"",
+                    ""type"": ""Button"",
+                    ""id"": ""47d90251-31b0-4d80-a650-5321d551384e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LevelSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""4459735c-9a5e-4e84-acc4-51cb6f963aca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -118,7 +134,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse;Touch"",
                     ""action"": ""Teclas"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -129,7 +145,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse;Touch"",
                     ""action"": ""Teclas"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -140,7 +156,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse;Touch"",
                     ""action"": ""Teclas"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -151,7 +167,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse;Touch"",
                     ""action"": ""Teclas"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -162,8 +178,30 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse;Touch"",
                     ""action"": ""Teclas"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34983a8d-2844-4855-a9fd-d3ad6b2978fc"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Invincibility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29c49f6f-b1a1-4894-ae0e-8931f9ebeb22"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LevelSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -250,6 +288,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // Teclado Port
         m_TecladoPort = asset.FindActionMap("Teclado Port", throwIfNotFound: true);
         m_TecladoPort_Teclas = m_TecladoPort.FindAction("Teclas", throwIfNotFound: true);
+        m_TecladoPort_Invincibility = m_TecladoPort.FindAction("Invincibility", throwIfNotFound: true);
+        m_TecladoPort_LevelSelect = m_TecladoPort.FindAction("LevelSelect", throwIfNotFound: true);
         // MousePort
         m_MousePort = asset.FindActionMap("MousePort", throwIfNotFound: true);
         m_MousePort_PrimaryContact = m_MousePort.FindAction("Primary Contact", throwIfNotFound: true);
@@ -361,11 +401,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_TecladoPort;
     private ITecladoPortActions m_TecladoPortActionsCallbackInterface;
     private readonly InputAction m_TecladoPort_Teclas;
+    private readonly InputAction m_TecladoPort_Invincibility;
+    private readonly InputAction m_TecladoPort_LevelSelect;
     public struct TecladoPortActions
     {
         private @PlayerInput m_Wrapper;
         public TecladoPortActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Teclas => m_Wrapper.m_TecladoPort_Teclas;
+        public InputAction @Invincibility => m_Wrapper.m_TecladoPort_Invincibility;
+        public InputAction @LevelSelect => m_Wrapper.m_TecladoPort_LevelSelect;
         public InputActionMap Get() { return m_Wrapper.m_TecladoPort; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -378,6 +422,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Teclas.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
                 @Teclas.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
                 @Teclas.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnTeclas;
+                @Invincibility.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnInvincibility;
+                @Invincibility.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnInvincibility;
+                @Invincibility.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnInvincibility;
+                @LevelSelect.started -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnLevelSelect;
+                @LevelSelect.performed -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnLevelSelect;
+                @LevelSelect.canceled -= m_Wrapper.m_TecladoPortActionsCallbackInterface.OnLevelSelect;
             }
             m_Wrapper.m_TecladoPortActionsCallbackInterface = instance;
             if (instance != null)
@@ -385,6 +435,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Teclas.started += instance.OnTeclas;
                 @Teclas.performed += instance.OnTeclas;
                 @Teclas.canceled += instance.OnTeclas;
+                @Invincibility.started += instance.OnInvincibility;
+                @Invincibility.performed += instance.OnInvincibility;
+                @Invincibility.canceled += instance.OnInvincibility;
+                @LevelSelect.started += instance.OnLevelSelect;
+                @LevelSelect.performed += instance.OnLevelSelect;
+                @LevelSelect.canceled += instance.OnLevelSelect;
             }
         }
     }
@@ -458,6 +514,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface ITecladoPortActions
     {
         void OnTeclas(InputAction.CallbackContext context);
+        void OnInvincibility(InputAction.CallbackContext context);
+        void OnLevelSelect(InputAction.CallbackContext context);
     }
     public interface IMousePortActions
     {

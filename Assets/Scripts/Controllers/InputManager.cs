@@ -40,8 +40,12 @@ namespace Controllers
             playerInput.TecladoPort.Teclas.performed += PressedKeyboardKey;
             playerInput.Touch.FourContacts.performed += FourContactsOnperformed;
             playerInput.Touch.FiveContacts.performed += FiveContactsOnperformed;
+            playerInput.TecladoPort.Invincibility.performed += InvincibilityOnperformed;
+            playerInput.TecladoPort.LevelSelect.performed += LevelSelectOnperformed;
         }
-        
+
+
+
         private void OnDisable()
         {
             playerInput.Disable();
@@ -52,6 +56,8 @@ namespace Controllers
             playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;
             playerInput.Touch.FourContacts.performed -= FourContactsOnperformed;
             playerInput.Touch.FiveContacts.performed -= FiveContactsOnperformed;
+            playerInput.TecladoPort.Invincibility.performed -= InvincibilityOnperformed;
+            playerInput.TecladoPort.LevelSelect.performed -= LevelSelectOnperformed;
         }
 
         private void StartedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
@@ -66,5 +72,7 @@ namespace Controllers
             OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
         private void FourContactsOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
         private void FiveContactsOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
+        private void LevelSelectOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
+        private void InvincibilityOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
     }
 }

@@ -23,7 +23,7 @@
                 },
                 {
                     "name": "Four Contacts",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "41c1964c-0748-4ac7-99a1-eb357ebfa7e1",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -96,6 +96,22 @@
                     "expectedControlType": "Key",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Invincibility",
+                    "type": "Button",
+                    "id": "47d90251-31b0-4d80-a650-5321d551384e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LevelSelect",
+                    "type": "Button",
+                    "id": "4459735c-9a5e-4e84-acc4-51cb6f963aca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -105,7 +121,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse;Touch",
                     "action": "Teclas",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -116,7 +132,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse;Touch",
                     "action": "Teclas",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -127,7 +143,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse;Touch",
                     "action": "Teclas",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -138,7 +154,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse;Touch",
                     "action": "Teclas",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -149,8 +165,30 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse;Touch",
                     "action": "Teclas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34983a8d-2844-4855-a9fd-d3ad6b2978fc",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Invincibility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29c49f6f-b1a1-4894-ae0e-8931f9ebeb22",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LevelSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
