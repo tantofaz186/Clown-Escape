@@ -9,7 +9,7 @@ public class Cheats : MonoBehaviour
     private UIController uiController;
     private AudioSource audioSource;
     [SerializeField] private AudioClip CheatTriggerAudioClip;
-
+    [SerializeField] private float minTime = 1.2f;
     private void Awake()
     {
         inputManager = InputManager.Instance;
@@ -28,17 +28,23 @@ public class Cheats : MonoBehaviour
         inputManager.FiveTouch -= Invincibility;
     }
     
-    private void Invincibility()
+    private void Invincibility(float time)
     {
-        Debug.Log("Invincibility");
-        CheatTrigger();
-        GameOverOnCollision.playerIsInvincible = true;
+        if (time > minTime)
+        { 
+            Debug.Log("Invincibility");
+            CheatTrigger(); 
+            GameOverOnCollision.playerIsInvincible = true;
+        }
     }
 
-    private void UnlockLevelSelectScreen()
+    private void UnlockLevelSelectScreen(float time)
     {
-        CheatTrigger();
-        uiController.LevelSelect();
+        if (time > minTime)
+        {
+            CheatTrigger();
+            uiController.LevelSelect();
+        }
     }
 
     private void CheatTrigger()
