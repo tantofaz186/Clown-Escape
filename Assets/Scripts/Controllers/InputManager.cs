@@ -15,7 +15,7 @@ namespace Controllers
         public delegate void PressedKey(Key key);
 
         public event PressedKey OnKeyPress;
-        public delegate void TouchedWithMultipleFingers();
+        public delegate void TouchedWithMultipleFingers(float time);
 
         public event TouchedWithMultipleFingers FourTouch;
         public event TouchedWithMultipleFingers FiveTouch;
@@ -70,9 +70,9 @@ namespace Controllers
             OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
         private void PressedKeyboardKey(InputAction.CallbackContext context) =>
             OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
-        private void FourContactsOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
-        private void FiveContactsOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
-        private void LevelSelectOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
-        private void InvincibilityOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
+        private void FourContactsOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke((float)context.time);
+        private void FiveContactsOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke((float)context.time);
+        private void LevelSelectOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke((float)context.time);
+        private void InvincibilityOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke((float)context.time);
     }
 }
