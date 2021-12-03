@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6248276216908055632}
   - component: {fileID: 8165766459298115738}
   - component: {fileID: 7391309641067816331}
-  - component: {fileID: 7391309641067816330}
   - component: {fileID: 7391309641067816328}
+  - component: {fileID: 524635778761789265}
   m_Layer: 6
   m_Name: trampolim
   m_TagString: Untagged
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7661288327792611663}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 15.951717, y: -5.067179, z: 5.4770894}
   m_LocalScale: {x: 16.0899, y: 17.591337, z: 16.918142}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &6248276216908055632
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -100,20 +100,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &7391309641067816330
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7661288327792611663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: de2e0aa31249dd6418adabe35ac1d04f, type: 3}
 --- !u!114 &7391309641067816328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 12.16
+--- !u!65 &524635778761789265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7661288327792611663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.059125815, y: 0.0750999, z: 0.019780956}
+  m_Center: {x: -0.0025306572, y: -0.000000013553182, z: -0.00010954657}
