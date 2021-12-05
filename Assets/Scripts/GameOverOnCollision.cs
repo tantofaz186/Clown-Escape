@@ -17,12 +17,12 @@ public class GameOverOnCollision : MonoBehaviour
 
     protected void Awake()
     {
-        DestroyComponentIfPlayerInvincible();
         if (player == null)
         {
             player = FindObjectOfType<PlayerCharacter>();
             playerCollider = player.GetComponent<Collider>();
         }
+        DestroyComponentIfPlayerInvincible();
     }
     protected void OnTriggerEnter(Collider other)
     {
@@ -34,7 +34,6 @@ public class GameOverOnCollision : MonoBehaviour
         //{
         //    CollidedWithCharacter?.Invoke();
         //}
-
     }
     protected void OnCollisionEnter(Collision collision)
     {

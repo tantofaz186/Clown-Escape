@@ -6,7 +6,6 @@ public class Enemy : GameOverOnCollision
 
     private void FixedUpdate()
     {
-        transform.Translate((player.transform.position - transform.position).normalized 
-                            * (Time.deltaTime * speed));
+        transform.Translate(Vector3.right * (Time.deltaTime * speed));
     }
 }
