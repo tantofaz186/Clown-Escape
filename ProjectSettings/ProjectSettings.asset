@@ -129,11 +129,11 @@ PlayerSettings:
     Others: 1
   bundleVersion: 1.0.2
   preloadedAssets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2570921008912562092, guid: 41929c4720bce654893e4248b01f19d4, type: 3}
+  - {fileID: 5629902704806295200, guid: 5d27f530281ae424c83dffb4c643a3c3, type: 3}
+  - {fileID: 4344203914092500619, guid: 4855d556f8364c7459980c385bb832df, type: 3}
+  - {fileID: 102900000, guid: 3a8702cdc455ca04bae29f4b69e905cc, type: 3}
+  - {fileID: 102900000, guid: 64f56eef1cfcdae4793a8e9bc1484132, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

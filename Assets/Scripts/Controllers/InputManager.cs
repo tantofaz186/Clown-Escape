@@ -15,6 +15,10 @@ namespace Controllers
         public delegate void PressedKey(Key key);
 
         public event PressedKey OnKeyPress;
+        public delegate void TouchedWithMultipleFingers();
+
+        public event TouchedWithMultipleFingers FourTouch;
+        public event TouchedWithMultipleFingers FiveTouch;
 
         #endregion
 
@@ -34,7 +38,12 @@ namespace Controllers
             playerInput.MousePort.PrimaryContact.started += StartedPrimaryTouchWithMouse;
             playerInput.MousePort.PrimaryContact.canceled += EndedPrimaryTouchWithMouse;
             playerInput.TecladoPort.Teclas.performed += PressedKeyboardKey;
+            playerInput.Touch.FourContacts.performed += FourContactsOnperformed;
+            playerInput.Touch.FiveContacts.performed += FiveContactsOnperformed;
+            playerInput.TecladoPort.Invincibility.performed += InvincibilityOnperformed;
+            playerInput.TecladoPort.LevelSelect.performed += LevelSelectOnperformed;
         }
+
 
 
         private void OnDisable()
@@ -45,6 +54,10 @@ namespace Controllers
             playerInput.MousePort.PrimaryContact.started -= StartedPrimaryTouchWithMouse;
             playerInput.MousePort.PrimaryContact.canceled -= EndedPrimaryTouchWithMouse;
             playerInput.TecladoPort.Teclas.performed -= PressedKeyboardKey;
+            playerInput.Touch.FourContacts.performed -= FourContactsOnperformed;
+            playerInput.Touch.FiveContacts.performed -= FiveContactsOnperformed;
+            playerInput.TecladoPort.Invincibility.performed -= InvincibilityOnperformed;
+            playerInput.TecladoPort.LevelSelect.performed -= LevelSelectOnperformed;
         }
 
         private void StartedPrimaryTouchWithMouse(InputAction.CallbackContext context) =>
@@ -57,5 +70,9 @@ namespace Controllers
             OnEndTouch?.Invoke(playerInput.Touch.PrimaryPosition.ReadValue<Vector2>(), (float)context.time);
         private void PressedKeyboardKey(InputAction.CallbackContext context) =>
             OnKeyPress?.Invoke(playerInput.TecladoPort.Teclas.ReadValue<Key>());
+        private void FourContactsOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
+        private void FiveContactsOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
+        private void LevelSelectOnperformed(InputAction.CallbackContext context) => FourTouch?.Invoke();
+        private void InvincibilityOnperformed(InputAction.CallbackContext context) => FiveTouch?.Invoke();
     }
 }
