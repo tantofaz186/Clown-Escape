@@ -1,7 +1,6 @@
-using System;
+using System.Collections;
 using Controllers;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Cheats : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class Cheats : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip CheatTriggerAudioClip;
     [SerializeField] private float minTime = 1.2f;
+
     private void Awake()
     {
         inputManager = InputManager.Instance;
@@ -22,29 +22,31 @@ public class Cheats : MonoBehaviour
         inputManager.FourTouch += UnlockLevelSelectScreen;
         inputManager.FiveTouch += Invincibility;
     }
+
     private void OnDisable()
     {
         inputManager.FourTouch -= UnlockLevelSelectScreen;
         inputManager.FiveTouch -= Invincibility;
     }
-    
+
     private void Invincibility(float time)
     {
-        if (time > minTime)
-        { 
-            Debug.Log("Invincibility");
-            CheatTrigger(); 
-            GameOverOnCollision.playerIsInvincible = true;
-        }
+        StopAllCoroutines();
+        StartCoroutine(IEInvincibility());
     }
 
+    IEnumerator IEInvincibility()
+    {
+        yield return new WaitForSeconds(minTime);
+        Debug.Log("Invincibility");
+        CheatTrigger();
+        GameOverOnCollision.playerIsInvincible = true;
+    }
     private void UnlockLevelSelectScreen(float time)
     {
-        if (time > minTime)
-        {
-            CheatTrigger();
-            uiController.LevelSelect();
-        }
+        StopAllCoroutines();
+        CheatTrigger();
+        uiController.LevelSelect();
     }
 
     private void CheatTrigger()

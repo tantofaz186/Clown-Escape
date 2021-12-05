@@ -1203,7 +1203,7 @@ Transform:
   m_GameObject: {fileID: 5364691902906278501}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1340105533955711153}
   - {fileID: 9180439186802873614}
@@ -1255,9 +1255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5168d480d31f234faa69d378a9cded5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 9.5
+  jumpForce: 6
   acceleration: 11
-  maxSpeed: 10
+  maxSpeed: 2
   baseCol: {fileID: 3428768131595223567}
   slideCol: {fileID: 6656024358587444823}
   weapon: {fileID: 1865679821763055791}
@@ -1285,7 +1285,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5364691902906278501}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4361479debff63348b680e8f4cdc759b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.12
@@ -1299,7 +1299,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5364691902906278501}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4361479debff63348b680e8f4cdc759b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.12

@@ -139,7 +139,7 @@ public class PlayerCharacter : MonoBehaviour,
     
     private float tempoTravado = 0;
     private float tempoMaximoTravado = 0.7f;
-    private void OnCollisionStay(Collision other)
+    /*private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstaculo"))
         {
@@ -152,6 +152,6 @@ public class PlayerCharacter : MonoBehaviour,
                 tempoTravado = 0;
             }
         }
-    }
+    }*/
 
 }
