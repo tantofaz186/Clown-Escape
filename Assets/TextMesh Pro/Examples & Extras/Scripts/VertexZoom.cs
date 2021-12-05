@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using System;
 namespace TextMesh_Pro.Examples___Extras.Scripts
 {
 
@@ -40,7 +40,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
         }
 
 
-        void ON_TEXT_CHANGED(Object obj)
+        void ON_TEXT_CHANGED(System.Object obj)
         {
             if (obj == m_TextComponent)
                 hasTextChanged = true;
@@ -128,7 +128,7 @@ namespace TextMesh_Pro.Examples___Extras.Scripts
                     //Vector3 jitterOffset = new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
 
                     // Determine the random scale change for each character.
-                    float randomScale = Random.Range(1f, 1.5f);
+                    float randomScale = UnityEngine.Random.Range(1f, 1.5f);
                     
                     // Add modified scale and index
                     modifiedCharScale.Add(randomScale);

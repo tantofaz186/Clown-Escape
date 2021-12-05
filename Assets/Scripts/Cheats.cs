@@ -45,10 +45,15 @@ public class Cheats : MonoBehaviour
     private void UnlockLevelSelectScreen(float time)
     {
         StopAllCoroutines();
+        StartCoroutine(IELevelSelectScreen());
+    }
+
+    IEnumerator IELevelSelectScreen()
+    {
+        yield return new WaitForSeconds(minTime);
         CheatTrigger();
         uiController.LevelSelect();
     }
-
     private void CheatTrigger()
     {
         audioSource.PlayOneShot(CheatTriggerAudioClip);
