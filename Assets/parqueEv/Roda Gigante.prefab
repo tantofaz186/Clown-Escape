@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1331080649965707654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4547659597914560226}
+  - component: {fileID: 3533252592236961581}
+  - component: {fileID: 4437748370472387263}
+  m_Layer: 6
+  m_Name: Roda Gigante
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4547659597914560226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331080649965707654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_Children:
+  - {fileID: 6832822160718880251}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3533252592236961581
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331080649965707654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.586739, y: 0.3031215, z: 1.6432724}
+  m_Center: {x: 1.0613997, y: -0.16617873, z: -0.4931755}
+--- !u!65 &4437748370472387263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331080649965707654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.097247, y: 5.2058887, z: 0.7041704}
+  m_Center: {x: 1.0567441, y: 3.411603, z: -0.57487595}
+--- !u!1001 &8238097699942181234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4547659597914560226}
+    m_Modifications:
+    - target: {fileID: 2867461543369682483, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_Name
+      value: rodaGigante
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867461543369682483, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867461543369682483, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.056797225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7594458
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.056797236
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70497334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.05490113
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6910953
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.14961913
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 16.512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 87.684
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -8.099
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43482be4882764a48bf7ca5896f6d617, type: 3}
+--- !u!4 &6832822160718880251 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3206727553554642057, guid: 43482be4882764a48bf7ca5896f6d617,
+    type: 3}
+  m_PrefabInstance: {fileID: 8238097699942181234}
+  m_PrefabAsset: {fileID: 0}

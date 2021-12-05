@@ -3,7 +3,17 @@ guid: 8ae520d9babd6dd49aec1a0f7c592c17
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: eb03cb4dbca5ab744a1ebb5db6846cd9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: clownText
+    second: {fileID: 2800000, guid: b0a8bee812d54234eb160a920c173182, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
